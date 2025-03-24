@@ -1,0 +1,51 @@
+﻿<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="EnvironmentalApp.MainPage">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20">
+
+            <Label Text="Environmental Monitoring App" FontSize="Title" HorizontalOptions="Center" />
+
+            <Grid ColumnDefinitions="*, *" RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, Auto">
+
+                <Button Text="View Map" Clicked="OnMapViewClicked" Grid.Row="0" Grid.ColumnSpan="2"/>
+
+                <Label Text="Recent Alerts:" FontSize="Subtitle" Grid.Row="1" Grid.ColumnSpan="2"/>
+
+                <CollectionView ItemsSource="{Binding RecentAlerts}" Grid.Row="2" Grid.ColumnSpan="2">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid ColumnDefinitions="*, Auto">
+                                <Label Text="{Binding AlertMessage}" Grid.Column="0" />
+                                <Label Text="{Binding AlertTime}" Grid.Column="1" />
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+
+                <Label Text="Sensor Status:" FontSize="Subtitle" Grid.Row="3" Grid.ColumnSpan="2"/>
+
+                <CollectionView ItemsSource="{Binding SensorStatuses}" Grid.Row="4" Grid.ColumnSpan="2">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid ColumnDefinitions="*, *, *, *">
+                                <Label Text="{Binding SensorID}" Grid.Column="0"/>
+                                <Label Text="{Binding Status}" Grid.Column="1"/>
+                                <Label Text="{Binding AirQuality}" Grid.Column="2"/>
+                                <Label Text="{Binding WaterQuality}" Grid.Column="3"/>
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+
+                <Button Text="Sensor Management" Clicked="OnSensorManagementClicked" Grid.Row="5" Grid.Column="0"/>
+                <Button Text="Data Analysis" Clicked="OnDataAnalysisClicked" Grid.Row="5" Grid.Column="1"/>
+                <Button Text="Reports" Clicked="OnReportsClicked" Grid.Row="6" Grid.Column="0"/>
+                <Button Text="User Management" Clicked="OnUserManagementClicked" Grid.Row="6" Grid.Column="1"/>
+
+            </Grid>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
