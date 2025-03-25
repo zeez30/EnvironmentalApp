@@ -7,7 +7,7 @@
 
             <Label Text="Environmental Monitoring App" FontSize="Title" HorizontalOptions="Center" />
 
-            <Grid ColumnDefinitions="*, *" RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, Auto">
+            <Grid ColumnDefinitions="*, *" RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto">
 
                 <Button Text="View Map" Clicked="OnMapViewClicked" Grid.Row="0" Grid.ColumnSpan="2"/>
 
@@ -39,13 +39,28 @@
                     </CollectionView.ItemTemplate>
                 </CollectionView>
 
-                <Button Text="Sensor Management" Clicked="OnSensorManagementClicked" Grid.Row="5" Grid.Column="0"/>
-                <Button Text="Data Analysis" Clicked="OnDataAnalysisClicked" Grid.Row="5" Grid.Column="1"/>
-                <Button Text="Reports" Clicked="OnReportsClicked" Grid.Row="6" Grid.Column="0"/>
-                <Button Text="User Management" Clicked="OnUserManagementClicked" Grid.Row="6" Grid.Column="1"/>
+                <Label Text="Air Quality Data:" FontSize="Subtitle" Grid.Row="5" Grid.ColumnSpan="2" />
+
+                <CollectionView ItemsSource="{Binding AirQualityData}" Grid.Row="6" Grid.ColumnSpan="2">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid ColumnDefinitions="*, *, *, *, *">
+                                <Label Text="{Binding DateTime}" Grid.Column="0" />
+                                <Label Text="{Binding NitrogenDioxide}" Grid.Column="1" />
+                                <Label Text="{Binding SulphurDioxide}" Grid.Column="2" />
+                                <Label Text="{Binding PM2_5}" Grid.Column="3" />
+                                <Label Text="{Binding PM10}" Grid.Column="4" />
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+
+                <Button Text="Sensor Management" Clicked="OnSensorManagementClicked" Grid.Row="7" Grid.Column="0"/>
+                <Button Text="Data Analysis" Clicked="OnDataAnalysisClicked" Grid.Row="7" Grid.Column="1"/>
+                <Button Text="Reports" Clicked="OnReportsClicked" Grid.Row="8" Grid.Column="0"/>
+                <Button Text="User Management" Clicked="OnUserManagementClicked" Grid.Row="8" Grid.Column="1"/>
 
             </Grid>
-
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>
