@@ -1,6 +1,8 @@
 namespace EnvironmentalApp;
 using Microsoft.Maui.Controls.Maps;
 using Microsoft.Maui.Maps;
+using System.Collections.ObjectModel;
+using System;
 
 public partial class MapPage : ContentPage
 {
@@ -20,9 +22,17 @@ public partial class MapPage : ContentPage
     public MapPage()
     {
         InitializeComponent();
+
+        var p = new Pin()
+        {
+            Location = new Location(55.9533, -3.1883), // Edinburgh, Scotland
+            Label = "Sensor 123",
+            Address = "Air Quality: High, Water Quality: Normal",
+            Type = PinType.Place
+        };
+
+        myMap.Pins.Add(p);
     }
-
-
     private void Button_Clicked(object sender, EventArgs e)
     {
         var p = new Pin()
@@ -32,15 +42,8 @@ public partial class MapPage : ContentPage
             Address = "Test2"
         };
 
-        p.MarkerClicked += P_MarkerClicked;
-
         myMap.Pins.Add(p);
 
         myMap.MoveToRegion(MapSpan.FromCenterAndRadius(new Location(40, 2), Distance.FromKilometers(10)));
-    }
-
-    private void P_MarkerClicked(object sender, PinClickedEventArgs e)
-    {
-        DisplayAlert("Test1", "Test2", "Test3");
     }
 }
