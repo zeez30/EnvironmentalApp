@@ -3,34 +3,34 @@ using System;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Threading.Tasks;
-using EnvironmentalApp.Data; // Assuming your data models and database service are in this namespace
+using EnvironmentalApp.Data;
+using Microsoft.Extensions.Logging;
+using Microsoft.Maui.ApplicationModel;
 
 namespace EnvironmentalApp
 {
-    /// <summary>
-    /// Represents the main page of the application, displaying alerts and sensor statuses.
-    /// </summary>
     public partial class MainPage : ContentPage
     {
+        private readonly ILogger<MainPage> _logger;
+
         // ObservableCollections for data binding to the UI.
-        public ObservableCollection<Alert> RecentAlerts { get; set; }
-        public ObservableCollection<SensorStatus> SensorStatuses { get; set; }
+        public ObservableCollection<Alert> RecentAlerts { get; set; } = new ObservableCollection<Alert>();
+        public ObservableCollection<SensorStatus> SensorStatuses { get; set; } = new ObservableCollection<SensorStatus>();
+        public ObservableCollection<AirQualityData> AirQualityData { get; set; } = new ObservableCollection<AirQualityData>();
 
         /// <summary>
         /// Initializes a new instance of the MainPage class.
         /// </summary>
-        public MainPage()
+        public MainPage(ILogger<MainPage> logger)
         {
-            InitializeComponent(); // Initializes the XAML components.
-            InitializeData(); // Initializes the initial data.
-            BindingContext = this; // Sets the binding context for data binding.
-            ImportExcelDataAsync(); // Imports data from the Excel file.
+            InitializeComponent();
+            _logger = logger;
+            BindingContext = this; //Set DataContext here
+            InitializeDataAsync();
+            ImportExcelDataAsync();
         }
 
-        /// <summary>
-        /// Initializes the sample data for alerts and sensor statuses.
-        /// </summary>
-        private void InitializeData()
+        private async Task InitializeDataAsync()
         {
             RecentAlerts = new ObservableCollection<Alert>
             {
@@ -47,14 +47,10 @@ namespace EnvironmentalApp
             };
         }
 
-        /// <summary>
-        /// Imports air quality data from an Excel file into the SQLite database.
-        /// </summary>
         private async Task ImportExcelDataAsync()
         {
             string excelFilePath = Path.Combine(FileSystem.AppDataDirectory, "Air quality.xlsx");
 
-            // Check if the Excel file exists in the correct location; if not, copy it from resources.
             if (!File.Exists(excelFilePath))
             {
                 try
@@ -65,88 +61,67 @@ namespace EnvironmentalApp
                 }
                 catch (Exception ex)
                 {
-                    // Log the exception and handle the error gracefully.
-                    Console.WriteLine($"Error copying Excel file: {ex.Message}");
-                    // Optionally, show an error message to the user.
-                    return; // Exit the method to prevent further errors.
+                    _logger.LogError(ex, "Error copying Excel file");
+                    await DisplayAlert("Error", "Failed to copy Excel file", "OK");
+                    return;
                 }
             }
 
             try
             {
-                var database = await DatabaseService.Instance;
-                await database.ImportAirQualityDataFromExcel(excelFilePath);
-
-                // Optionally, fetch and display the imported data in the UI.
+                var database = DatabaseService.Instance; // Access the Instance
+                await database.ImportAirQualityDataFromExcel(excelFilePath); // Await the import process
+                                                                             // Retrieve data after import and update UI
                 var airQualityData = await database.GetAirQualityDataAsync();
-                // Process and display airQualityData in the UI here.
+
+                // Convert the database data to an ObservableCollection for UI binding
+                AirQualityData = new ObservableCollection<AirQualityData>(airQualityData);
+                OnPropertyChanged(nameof(AirQualityData)); // Notify UI to update
             }
             catch (Exception ex)
             {
-                // Log the exception and handle the error gracefully.
-                Console.WriteLine($"Error importing data from Excel: {ex.Message}");
-                // Optionally, show an error message to the user.
+                _logger.LogError(ex, "Error importing or fetching data from Excel");
+                await DisplayAlert("Error", "Failed to import/fetch data", "OK");
             }
         }
 
-        /// <summary>
-        /// Event handler for the "View Map" button click, navigates to the MapPage.
-        /// </summary>
         private async void OnMapViewClicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new MapPage());
         }
 
-        /// <summary>
-        /// Event handler for the "Sensor Management" button click, navigates to the SensorManagementPage.
-        /// </summary>
         private async void OnSensorManagementClicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new SensorManagementPage());
         }
 
-        /// <summary>
-        /// Event handler for the "Data Analysis" button click, navigates to the DataAnalysisPage.
-        /// </summary>
         private async void OnDataAnalysisClicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new DataAnalysisPage());
         }
 
-        /// <summary>
-        /// Event handler for the "Reports" button click, navigates to the ReportsPage.
-        /// </summary>
         private async void OnReportsClicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new ReportsPage());
         }
 
-        /// <summary>
-        /// Event handler for the "User Management" button click, navigates to the UserManagementPage.
-        /// </summary>
         private async void OnUserManagementClicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new UserManagementPage());
         }
 
-        /// <summary>
-        /// Represents an alert message with a timestamp.
-        /// </summary>
         public class Alert
         {
-            public string AlertMessage { get; set; }
-            public DateTime AlertTime { get; set; }
+            public string AlertMessage { get; set; } = string.Empty;
+            public DateTime AlertTime { get; set; } = DateTime.Now;
         }
 
-        /// <summary>
-        /// Represents the status of a sensor, including air and water quality.
-        /// </summary>
         public class SensorStatus
         {
-            public string SensorID { get; set; }
-            public string Status { get; set; }
-            public string AirQuality { get; set; }
-            public string WaterQuality { get; set; }
+            public string SensorID { get; set; } = string.Empty;
+            public string Status { get; set; } = string.Empty;
+            public string AirQuality { get; set; } = string.Empty;
+            public string WaterQuality { get; set; } = string.Empty;
         }
     }
 }

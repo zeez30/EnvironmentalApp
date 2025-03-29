@@ -7,7 +7,7 @@
 
             <Label Text="Environmental Monitoring App" FontSize="Title" HorizontalOptions="Center" />
 
-            <Grid ColumnDefinitions="*, *" RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto">
+            <Grid ColumnDefinitions="*, *" RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto">
 
                 <Button Text="View Map" Clicked="OnMapViewClicked" Grid.Row="0" Grid.ColumnSpan="2"/>
 
