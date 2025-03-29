@@ -39,6 +39,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+
 		<PackageReference Include="ClosedXML" Version="0.104.2" />
 		<PackageReference Include="EPPlus" Version="7.7.0" />
 		<PackageReference Include="Microsoft.Bcl.AsyncInterfaces" Version="8.0.0" />
