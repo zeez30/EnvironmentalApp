@@ -44,7 +44,13 @@ Each team member will be responsible for the completion of at least 3 seperate d
 
 Jack:
 
-Zee:
+Zee: 
+Environmental Scientist : 
+- Locate and navigate to sensors in the field for maintenance or inspection purposes.
+Operations Manager :
+- Monitor the operational status of sensors
+Administrator :
+- 
 
 Abbie:
 
