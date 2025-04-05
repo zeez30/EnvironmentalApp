@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using EnvironmentalApp.Data;
 using EnvironmentalApp.Services;
 using EnvironmentalApp.ViewModels;
+using System.IO; // Add this for Path.Combine
 
 namespace EnvironmentalApp
 {
@@ -17,6 +18,8 @@ namespace EnvironmentalApp
             var builder = MauiApp.CreateBuilder();
             builder
                 .UseMauiApp<App>()
+                .UseMauiCommunityToolkit()
+                .UseMauiCommunityToolkitMaps("YOUR_MAPS_API_KEY")
                 .ConfigureFonts(fonts =>
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
@@ -24,27 +27,23 @@ namespace EnvironmentalApp
                 });
 
 #if WINDOWS
-        Debug.WriteLine("Windows");
-        builder.UseMauiCommunityToolkitMaps("1g5lpw6it9LDTBpHeAQzM9nPcgtOYHr3lEvSuZ4G62HRjBovPneXJQQJ99BCACi5YpzcXOIAAAAgAZMP2wy5");
+            Debug.WriteLine("Windows");
 #endif
             builder.Logging.AddDebug();
-            // Database initialization (must be awaited, therefore we move it to a separate scope)
-            // Register DatabaseService as a singleton
-            builder.Services.AddSingleton<Data.DatabaseService>();
-=======
 
 #if DEBUG
             builder.Logging.AddDebug();
 #endif
 
-
             // Register the DbContext for Dependency Injection
             builder.Services.AddDbContext<AppDbContext>(options =>
             {
-                options.UseSqlite("Data Source=environmentaldata.db"); // Use a descriptive name!
+                var dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "environmentaldata.db");
+                Console.WriteLine($"Database Path: {dbPath}"); // To help find the database
+                options.UseSqlite($"Data Source={dbPath}");
             });
 
-            // Register the DatabaseService
+            // Register DatabaseService as a singleton (after AppDbContext)
             builder.Services.AddSingleton<DatabaseService>();
 
             // Register ViewModels (Transient or Singleton based on usage)
