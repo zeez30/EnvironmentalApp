@@ -66,7 +66,7 @@ namespace EnvironmentalApp
                     return;
                 }
             }
-
+           
             try
             {
                 var database = DatabaseService.Instance; // Access the Instance
@@ -82,7 +82,7 @@ namespace EnvironmentalApp
             {
                 _logger.LogError(ex, "Error importing or fetching data from Excel");
                 await DisplayAlert("Error", "Failed to import/fetch data", "OK");
-            }
+            } 
         }
 
         private async void OnMapViewClicked(object sender, EventArgs e)
