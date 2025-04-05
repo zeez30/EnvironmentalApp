@@ -17,6 +17,7 @@ namespace EnvironmentalApp
             var builder = MauiApp.CreateBuilder();
             builder
                 .UseMauiApp<App>()
+                .UseMauiCommunityToolkit()
                 .ConfigureFonts(fonts =>
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
@@ -31,7 +32,6 @@ namespace EnvironmentalApp
             // Database initialization (must be awaited, therefore we move it to a separate scope)
             // Register DatabaseService as a singleton
             builder.Services.AddSingleton<Data.DatabaseService>();
-=======
 
 #if DEBUG
             builder.Logging.AddDebug();
