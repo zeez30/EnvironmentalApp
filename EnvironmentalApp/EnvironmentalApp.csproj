@@ -41,6 +41,10 @@
 	<ItemGroup>
 
 		<PackageReference Include="ClosedXML" Version="0.104.2" />
+
+		<PackageReference Include="CommunityToolkit.Maui" Version="9.1.1" />
+
+		<PackageReference Include="CommunityToolkit.Maui.Maps" Version="2.0.4" />
 		<PackageReference Include="EPPlus" Version="7.7.0" />
 		<PackageReference Include="Microsoft.Bcl.AsyncInterfaces" Version="8.0.0" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="9.0.3" />
