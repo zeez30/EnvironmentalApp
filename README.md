@@ -42,7 +42,7 @@ Code control and task management will be handled using Github.
 ## Development Tasks
 Each team member will be responsible for the completion of at least 3 seperate development tasks related to the user stories provided, one for each role.
 
-Jack:
+Jack: <br>
 Environmental Scientist : <br>
 - Use a map to view real-time sensor statuses and alerts geographically. <br>
 Operations Manager : <br>
@@ -50,12 +50,12 @@ Operations Manager : <br>
 Administrator: <br>
 - Manage user access and roles within the application <br>
 
-Zee: 
-Environmental Scientist : 
-- Locate and navigate to sensors in the field for maintenance or inspection purposes.
-Operations Manager :
-- Monitor the operational status of sensors
-Administrator :
+Zee: <br>
+Environmental Scientist : <br>
+- Locate and navigate to sensors in the field for maintenance or inspection purposes. <br>
+Operations Manager : <br>
+- Monitor the operational status of sensors <br>
+Administrator : <br>
 - 
 
 Abbie:
