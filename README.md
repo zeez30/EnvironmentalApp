@@ -58,8 +58,14 @@ Operations Manager : <br>
 Administrator : <br>
 - 
 
-Abbie:
-
+Abbie: <br>
+Environmental Scientist: <br>
+	• Receive real-time alerts on threshold breaches, displayed on an interactive map.
+Operations Manager: <br>
+	• Schedule maintenance and ensure timely checks.
+Administrator: <br>
+	• Oversee data storage and implement backup strategies.
+ 
 ## Task Priorites
 For each task, Project Members must:
 - Document the requirement elaboration in a GitHub issue in consultation with the rest of the team. (LO4)
