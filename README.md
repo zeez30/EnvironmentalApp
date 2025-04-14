@@ -59,11 +59,11 @@ Administrator : <br>
 - 
 
 Abbie: <br>
-Environmental Scientist: <be>
+Environmental Scientist: <br>
 • Receive real-time alerts on threshold breaches, displayed on an interactive map. <br>
-Operations Manager: <be>
+Operations Manager: <br>
 • Schedule maintenance and ensure timely checks. <br>
-Administrator: <be>
+Administrator: <br>
 • Oversee data storage and implement backup strategies. <br>
  
 ## Task Priorites
