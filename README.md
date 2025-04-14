@@ -60,11 +60,11 @@ Administrator : <br>
 
 Abbie: <br>
 Environmental Scientist: <be>
-	• Receive real-time alerts on threshold breaches, displayed on an interactive map. <br>
+• Receive real-time alerts on threshold breaches, displayed on an interactive map. <br>
 Operations Manager: <be>
-	• Schedule maintenance and ensure timely checks. <br>
+• Schedule maintenance and ensure timely checks. <br>
 Administrator: <be>
-	• Oversee data storage and implement backup strategies. <br>
+• Oversee data storage and implement backup strategies. <br>
  
 ## Task Priorites
 For each task, Project Members must:
