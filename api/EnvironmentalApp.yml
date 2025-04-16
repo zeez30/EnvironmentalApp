@@ -1,0 +1,146 @@
+### YamlMime:ManagedReference
+items:
+- uid: EnvironmentalApp
+  commentId: N:EnvironmentalApp
+  id: EnvironmentalApp
+  children:
+  - EnvironmentalApp.App
+  - EnvironmentalApp.AppShell
+  - EnvironmentalApp.DataAnalysisPage
+  - EnvironmentalApp.MainActivity
+  - EnvironmentalApp.MainApplication
+  - EnvironmentalApp.MainPage
+  - EnvironmentalApp.MainPage.Alert
+  - EnvironmentalApp.MainPage.SensorStatus
+  - EnvironmentalApp.MapPage
+  - EnvironmentalApp.MauiProgram
+  - EnvironmentalApp.ReportsPage
+  - EnvironmentalApp.Resource
+  - EnvironmentalApp.SensorManagementPage
+  - EnvironmentalApp.UserManagementPage
+  langs:
+  - csharp
+  - vb
+  name: EnvironmentalApp
+  nameWithType: EnvironmentalApp
+  fullName: EnvironmentalApp
+  type: Namespace
+  assemblies:
+  - EnvironmentalApp
+references:
+- uid: EnvironmentalApp.App
+  commentId: T:EnvironmentalApp.App
+  href: EnvironmentalApp.App.html
+  name: App
+  nameWithType: App
+  fullName: EnvironmentalApp.App
+- uid: EnvironmentalApp.AppShell
+  commentId: T:EnvironmentalApp.AppShell
+  href: EnvironmentalApp.AppShell.html
+  name: AppShell
+  nameWithType: AppShell
+  fullName: EnvironmentalApp.AppShell
+- uid: EnvironmentalApp.DataAnalysisPage
+  commentId: T:EnvironmentalApp.DataAnalysisPage
+  href: EnvironmentalApp.DataAnalysisPage.html
+  name: DataAnalysisPage
+  nameWithType: DataAnalysisPage
+  fullName: EnvironmentalApp.DataAnalysisPage
+- uid: EnvironmentalApp.MainPage
+  commentId: T:EnvironmentalApp.MainPage
+  href: EnvironmentalApp.MainPage.html
+  name: MainPage
+  nameWithType: MainPage
+  fullName: EnvironmentalApp.MainPage
+- uid: EnvironmentalApp.MainPage.Alert
+  commentId: T:EnvironmentalApp.MainPage.Alert
+  href: EnvironmentalApp.MainPage.html
+  name: MainPage.Alert
+  nameWithType: MainPage.Alert
+  fullName: EnvironmentalApp.MainPage.Alert
+  spec.csharp:
+  - uid: EnvironmentalApp.MainPage
+    name: MainPage
+    href: EnvironmentalApp.MainPage.html
+  - name: .
+  - uid: EnvironmentalApp.MainPage.Alert
+    name: Alert
+    href: EnvironmentalApp.MainPage.Alert.html
+  spec.vb:
+  - uid: EnvironmentalApp.MainPage
+    name: MainPage
+    href: EnvironmentalApp.MainPage.html
+  - name: .
+  - uid: EnvironmentalApp.MainPage.Alert
+    name: Alert
+    href: EnvironmentalApp.MainPage.Alert.html
+- uid: EnvironmentalApp.MainPage.SensorStatus
+  commentId: T:EnvironmentalApp.MainPage.SensorStatus
+  href: EnvironmentalApp.MainPage.html
+  name: MainPage.SensorStatus
+  nameWithType: MainPage.SensorStatus
+  fullName: EnvironmentalApp.MainPage.SensorStatus
+  spec.csharp:
+  - uid: EnvironmentalApp.MainPage
+    name: MainPage
+    href: EnvironmentalApp.MainPage.html
+  - name: .
+  - uid: EnvironmentalApp.MainPage.SensorStatus
+    name: SensorStatus
+    href: EnvironmentalApp.MainPage.SensorStatus.html
+  spec.vb:
+  - uid: EnvironmentalApp.MainPage
+    name: MainPage
+    href: EnvironmentalApp.MainPage.html
+  - name: .
+  - uid: EnvironmentalApp.MainPage.SensorStatus
+    name: SensorStatus
+    href: EnvironmentalApp.MainPage.SensorStatus.html
+- uid: EnvironmentalApp.MapPage
+  commentId: T:EnvironmentalApp.MapPage
+  href: EnvironmentalApp.MapPage.html
+  name: MapPage
+  nameWithType: MapPage
+  fullName: EnvironmentalApp.MapPage
+- uid: EnvironmentalApp.MauiProgram
+  commentId: T:EnvironmentalApp.MauiProgram
+  href: EnvironmentalApp.MauiProgram.html
+  name: MauiProgram
+  nameWithType: MauiProgram
+  fullName: EnvironmentalApp.MauiProgram
+- uid: EnvironmentalApp.MainActivity
+  commentId: T:EnvironmentalApp.MainActivity
+  href: EnvironmentalApp.MainActivity.html
+  name: MainActivity
+  nameWithType: MainActivity
+  fullName: EnvironmentalApp.MainActivity
+- uid: EnvironmentalApp.MainApplication
+  commentId: T:EnvironmentalApp.MainApplication
+  href: EnvironmentalApp.MainApplication.html
+  name: MainApplication
+  nameWithType: MainApplication
+  fullName: EnvironmentalApp.MainApplication
+- uid: EnvironmentalApp.ReportsPage
+  commentId: T:EnvironmentalApp.ReportsPage
+  href: EnvironmentalApp.ReportsPage.html
+  name: ReportsPage
+  nameWithType: ReportsPage
+  fullName: EnvironmentalApp.ReportsPage
+- uid: EnvironmentalApp.SensorManagementPage
+  commentId: T:EnvironmentalApp.SensorManagementPage
+  href: EnvironmentalApp.SensorManagementPage.html
+  name: SensorManagementPage
+  nameWithType: SensorManagementPage
+  fullName: EnvironmentalApp.SensorManagementPage
+- uid: EnvironmentalApp.UserManagementPage
+  commentId: T:EnvironmentalApp.UserManagementPage
+  href: EnvironmentalApp.UserManagementPage.html
+  name: UserManagementPage
+  nameWithType: UserManagementPage
+  fullName: EnvironmentalApp.UserManagementPage
+- uid: EnvironmentalApp.Resource
+  commentId: T:EnvironmentalApp.Resource
+  href: EnvironmentalApp.Resource.html
+  name: Resource
+  nameWithType: Resource
+  fullName: EnvironmentalApp.Resource

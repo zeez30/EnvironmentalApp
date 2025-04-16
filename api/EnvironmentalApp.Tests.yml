@@ -1,0 +1,30 @@
+### YamlMime:ManagedReference
+items:
+- uid: EnvironmentalApp.Tests
+  commentId: N:EnvironmentalApp.Tests
+  id: EnvironmentalApp.Tests
+  children:
+  - EnvironmentalApp.Tests.MapPageTests
+  - EnvironmentalApp.Tests.Resource
+  langs:
+  - csharp
+  - vb
+  name: EnvironmentalApp.Tests
+  nameWithType: EnvironmentalApp.Tests
+  fullName: EnvironmentalApp.Tests
+  type: Namespace
+  assemblies:
+  - EnvironmentalApp.Tests
+references:
+- uid: EnvironmentalApp.Tests.MapPageTests
+  commentId: T:EnvironmentalApp.Tests.MapPageTests
+  href: EnvironmentalApp.Tests.MapPageTests.html
+  name: MapPageTests
+  nameWithType: MapPageTests
+  fullName: EnvironmentalApp.Tests.MapPageTests
+- uid: EnvironmentalApp.Tests.Resource
+  commentId: T:EnvironmentalApp.Tests.Resource
+  href: EnvironmentalApp.Tests.Resource.html
+  name: Resource
+  nameWithType: Resource
+  fullName: EnvironmentalApp.Tests.Resource

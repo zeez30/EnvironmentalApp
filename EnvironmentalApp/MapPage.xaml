@@ -5,6 +5,7 @@
              x:Class="EnvironmentalApp.MapPage"
              Title="MapPage">
     <StackLayout Margin="10" Orientation="Vertical">
+        
         <Button Text="Place Test Pin" Clicked="Button_Clicked" Grid.Row="5" Grid.Column="0"/>
         <maps:Map x:Name="myMap" IsShowingUser="true" MapClicked="OnMapClicked" IsTrafficEnabled="True"/>
     </StackLayout>
