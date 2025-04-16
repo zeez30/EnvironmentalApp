@@ -1,0 +1,437 @@
+### YamlMime:ManagedReference
+items:
+- uid: EnvironmentalApp.MainPage.SensorStatus
+  commentId: T:EnvironmentalApp.MainPage.SensorStatus
+  id: MainPage.SensorStatus
+  parent: EnvironmentalApp
+  children:
+  - EnvironmentalApp.MainPage.SensorStatus.AirQuality
+  - EnvironmentalApp.MainPage.SensorStatus.SensorID
+  - EnvironmentalApp.MainPage.SensorStatus.Status
+  - EnvironmentalApp.MainPage.SensorStatus.WaterQuality
+  langs:
+  - csharp
+  - vb
+  name: MainPage.SensorStatus
+  nameWithType: MainPage.SensorStatus
+  fullName: EnvironmentalApp.MainPage.SensorStatus
+  type: Class
+  source:
+    remote:
+      path: EnvironmentalApp/MainPage.xaml.cs
+      branch: Testing_Map-Integration
+      repo: https://github.com/zeez30/EnvironmentalApp.git
+    id: SensorStatus
+    path: EnvironmentalApp/MainPage.xaml.cs
+    startLine: 82
+  assemblies:
+  - EnvironmentalApp
+  namespace: EnvironmentalApp
+  syntax:
+    content: public class MainPage.SensorStatus
+    content.vb: Public Class MainPage.SensorStatus
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: EnvironmentalApp.MainPage.SensorStatus.SensorID
+  commentId: P:EnvironmentalApp.MainPage.SensorStatus.SensorID
+  id: SensorID
+  parent: EnvironmentalApp.MainPage.SensorStatus
+  langs:
+  - csharp
+  - vb
+  name: SensorID
+  nameWithType: MainPage.SensorStatus.SensorID
+  fullName: EnvironmentalApp.MainPage.SensorStatus.SensorID
+  type: Property
+  source:
+    remote:
+      path: EnvironmentalApp/MainPage.xaml.cs
+      branch: Testing_Map-Integration
+      repo: https://github.com/zeez30/EnvironmentalApp.git
+    id: SensorID
+    path: EnvironmentalApp/MainPage.xaml.cs
+    startLine: 84
+  assemblies:
+  - EnvironmentalApp
+  namespace: EnvironmentalApp
+  syntax:
+    content: public string SensorID { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property SensorID As String
+  overload: EnvironmentalApp.MainPage.SensorStatus.SensorID*
+- uid: EnvironmentalApp.MainPage.SensorStatus.Status
+  commentId: P:EnvironmentalApp.MainPage.SensorStatus.Status
+  id: Status
+  parent: EnvironmentalApp.MainPage.SensorStatus
+  langs:
+  - csharp
+  - vb
+  name: Status
+  nameWithType: MainPage.SensorStatus.Status
+  fullName: EnvironmentalApp.MainPage.SensorStatus.Status
+  type: Property
+  source:
+    remote:
+      path: EnvironmentalApp/MainPage.xaml.cs
+      branch: Testing_Map-Integration
+      repo: https://github.com/zeez30/EnvironmentalApp.git
+    id: Status
+    path: EnvironmentalApp/MainPage.xaml.cs
+    startLine: 85
+  assemblies:
+  - EnvironmentalApp
+  namespace: EnvironmentalApp
+  syntax:
+    content: public string Status { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Status As String
+  overload: EnvironmentalApp.MainPage.SensorStatus.Status*
+- uid: EnvironmentalApp.MainPage.SensorStatus.AirQuality
+  commentId: P:EnvironmentalApp.MainPage.SensorStatus.AirQuality
+  id: AirQuality
+  parent: EnvironmentalApp.MainPage.SensorStatus
+  langs:
+  - csharp
+  - vb
+  name: AirQuality
+  nameWithType: MainPage.SensorStatus.AirQuality
+  fullName: EnvironmentalApp.MainPage.SensorStatus.AirQuality
+  type: Property
+  source:
+    remote:
+      path: EnvironmentalApp/MainPage.xaml.cs
+      branch: Testing_Map-Integration
+      repo: https://github.com/zeez30/EnvironmentalApp.git
+    id: AirQuality
+    path: EnvironmentalApp/MainPage.xaml.cs
+    startLine: 86
+  assemblies:
+  - EnvironmentalApp
+  namespace: EnvironmentalApp
+  syntax:
+    content: public string AirQuality { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property AirQuality As String
+  overload: EnvironmentalApp.MainPage.SensorStatus.AirQuality*
+- uid: EnvironmentalApp.MainPage.SensorStatus.WaterQuality
+  commentId: P:EnvironmentalApp.MainPage.SensorStatus.WaterQuality
+  id: WaterQuality
+  parent: EnvironmentalApp.MainPage.SensorStatus
+  langs:
+  - csharp
+  - vb
+  name: WaterQuality
+  nameWithType: MainPage.SensorStatus.WaterQuality
+  fullName: EnvironmentalApp.MainPage.SensorStatus.WaterQuality
+  type: Property
+  source:
+    remote:
+      path: EnvironmentalApp/MainPage.xaml.cs
+      branch: Testing_Map-Integration
+      repo: https://github.com/zeez30/EnvironmentalApp.git
+    id: WaterQuality
+    path: EnvironmentalApp/MainPage.xaml.cs
+    startLine: 87
+  assemblies:
+  - EnvironmentalApp
+  namespace: EnvironmentalApp
+  syntax:
+    content: public string WaterQuality { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property WaterQuality As String
+  overload: EnvironmentalApp.MainPage.SensorStatus.WaterQuality*
+references:
+- uid: EnvironmentalApp
+  commentId: N:EnvironmentalApp
+  href: EnvironmentalApp.html
+  name: EnvironmentalApp
+  nameWithType: EnvironmentalApp
+  fullName: EnvironmentalApp
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: EnvironmentalApp.MainPage.SensorStatus.SensorID*
+  commentId: Overload:EnvironmentalApp.MainPage.SensorStatus.SensorID
+  href: EnvironmentalApp.MainPage.SensorStatus.html#EnvironmentalApp_MainPage_SensorStatus_SensorID
+  name: SensorID
+  nameWithType: MainPage.SensorStatus.SensorID
+  fullName: EnvironmentalApp.MainPage.SensorStatus.SensorID
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: EnvironmentalApp.MainPage.SensorStatus.Status*
+  commentId: Overload:EnvironmentalApp.MainPage.SensorStatus.Status
+  href: EnvironmentalApp.MainPage.SensorStatus.html#EnvironmentalApp_MainPage_SensorStatus_Status
+  name: Status
+  nameWithType: MainPage.SensorStatus.Status
+  fullName: EnvironmentalApp.MainPage.SensorStatus.Status
+- uid: EnvironmentalApp.MainPage.SensorStatus.AirQuality*
+  commentId: Overload:EnvironmentalApp.MainPage.SensorStatus.AirQuality
+  href: EnvironmentalApp.MainPage.SensorStatus.html#EnvironmentalApp_MainPage_SensorStatus_AirQuality
+  name: AirQuality
+  nameWithType: MainPage.SensorStatus.AirQuality
+  fullName: EnvironmentalApp.MainPage.SensorStatus.AirQuality
+- uid: EnvironmentalApp.MainPage.SensorStatus.WaterQuality*
+  commentId: Overload:EnvironmentalApp.MainPage.SensorStatus.WaterQuality
+  href: EnvironmentalApp.MainPage.SensorStatus.html#EnvironmentalApp_MainPage_SensorStatus_WaterQuality
+  name: WaterQuality
+  nameWithType: MainPage.SensorStatus.WaterQuality
+  fullName: EnvironmentalApp.MainPage.SensorStatus.WaterQuality

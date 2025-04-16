@@ -3,22 +3,37 @@ using Microsoft.Maui.Controls.Maps;
 using Microsoft.Maui.Maps;
 using System.Collections.ObjectModel;
 using System;
+using EnvironmentalApp.Data;
 
 public partial class MapPage : ContentPage
 {
-    void OnMapClicked(object sender, MapClickedEventArgs e)
+    public Microsoft.Maui.Controls.Maps.Map MyMap => myMap;
+    /// <summary>
+    /// Create a Pin Upon Map left Click
+    /// </summary>
+    /// <param name="sender">The sender object</param>
+    /// <param name="e">Map click event args</param>
+    public void OnMapClicked(object sender, MapClickedEventArgs e)
     {
-        System.Diagnostics.Debug.WriteLine($"MapClick: {e.Location.Latitude}, {e.Location.Longitude}");
-
-        var p = new Pin()
-        {
-            Location = e.Location,
-            Label = "A pin",
-            Address = "A place"
-        };
+        //System.Diagnostics.Debug.WriteLine($"MapClick: {e.Location.Latitude}, {e.Location.Longitude}");
+        var pinCreation = new PinCreation();
+        var p = pinCreation.CreatePin(e, "Sensor 123", "Air Quality: High, Water Quality: Normal");
         myMap.Pins.Add(p);
     }
 
+    /// <summary>
+    /// Constructor for MapPage testing
+    /// </summary>
+    /// <param name="mockMap"></param>
+    public MapPage(Microsoft.Maui.Controls.Maps.Map mockMap)
+    {
+        InitializeComponent();
+        myMap = mockMap;
+    }
+
+    /// <summary>
+    /// Constructor for default MapPage, creates a inital pin for testing purposes.
+    /// </summary>
     public MapPage()
     {
         InitializeComponent();
@@ -33,6 +48,11 @@ public partial class MapPage : ContentPage
 
         myMap.Pins.Add(p);
     }
+    /// <summary>
+    /// Button click event to add a pin to the map at a predefined location.
+    /// </summary>
+    /// <param name="sender">The sender object.</param>
+    /// <param name="e">Map click event args.</param>
     private void Button_Clicked(object sender, EventArgs e)
     {
         var p = new Pin()
