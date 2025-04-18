@@ -10,7 +10,6 @@ namespace EnvironmentalApp.Services
 {
     /// <summary>
     /// Provides access to sensor data, currently using mock data for demonstration.
-    /// In a real application, this would handle data retrieval from a data source.
     /// </summary>
     public class SensorService
     {
