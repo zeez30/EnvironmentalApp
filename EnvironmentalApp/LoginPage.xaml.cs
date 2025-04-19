@@ -26,7 +26,7 @@ namespace EnvironmentalApp
                 // Redirect to Home or Admin page depending on the role
                 await DisplayAlert("Success", "User signed in successfully!", "OK");
                 // Navigate to the home page:
-                await Navigation.PushAsync(new MainPage());
+                await Navigation.PushAsync(new MainPage(_authService));
             }
             else
             {

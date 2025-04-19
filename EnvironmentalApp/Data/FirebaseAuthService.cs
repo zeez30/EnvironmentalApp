@@ -12,12 +12,21 @@ namespace EnvironmentalApp.Data
             { "user@example.com", "user123" }
         };
 
+        private readonly Dictionary<string, string> _userRoles = new Dictionary<string, string>
+        {
+                { "admin@example.com", "admin" },
+                { "user@example.com", "user" }
+        };
+
+        public string CurrentUserRole { get; private set; }
+
         // This method can be used to validate email and password against the predefined list
         public Task<bool> ValidateUserAsync(string email, string password)
         {
             // Check if the email exists and the password matches
             if (_validUsers.ContainsKey(email) && _validUsers[email] == password)
             {
+                CurrentUserRole = GetUserRole(email);
                 return Task.FromResult(true);
             }
             return Task.FromResult(false);
@@ -30,23 +39,32 @@ namespace EnvironmentalApp.Data
         {
             var firebaseConfig = new FirebaseConfig("AIzaSyA2g6pKvKuszH5pKvQGUdMIaHsGJqXtiN0");  // Replace with your Firebase API Key
             _authProvider = new FirebaseAuthProvider(firebaseConfig);
+
+
         }
 
         // Sign In user with Email and Password
         public async Task<bool> SignInAsync(string email, string password)
         {
-            try
+            if (_validUsers.ContainsKey(email) && _validUsers[email] == password)
             {
-                _authLink = await _authProvider.SignInWithEmailAndPasswordAsync(email, password);
-                var token = _authLink.FirebaseToken;
+                // Assign the role based on email
+                CurrentUserRole = GetUserRole(email); // Update the role after login
 
-                // Optionally store the token or other details (such as role)
-                return true;  // If authenticated successfully
+                return true; // Return true if valid credentials
             }
-            catch (Exception)
+            return false; // Invalid credentials
+        }
+
+        private string GetUserRole(string email)
+        {
+            // Manually return role for this email (fake role assignment)
+            if (_userRoles.ContainsKey(email))
             {
-                return false;  // If authentication fails
+                var test = _validUsers[email];
+                return _userRoles[email];
             }
+            return "user";  // Default to 'user' if no role is found
         }
 
         // Sign Out user

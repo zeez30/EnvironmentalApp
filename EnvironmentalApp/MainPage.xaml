@@ -39,10 +39,10 @@
                     </CollectionView.ItemTemplate>
                 </CollectionView>
 
-                <Button Text="Sensor Management" Clicked="OnSensorManagementClicked" Grid.Row="5" Grid.Column="0"/>
-                <Button Text="Data Analysis" Clicked="OnDataAnalysisClicked" Grid.Row="5" Grid.Column="1"/>
-                <Button Text="Reports" Clicked="OnReportsClicked" Grid.Row="6" Grid.Column="0"/>
-                <Button Text="User Management" Clicked="OnUserManagementClicked" Grid.Row="6" Grid.Column="1"/>
+                <Button Text="Sensor Management" Clicked="OnSensorManagementClicked" Grid.Row="5" Grid.Column="0" IsVisible="{Binding IsAdminVisible}" />
+                <Button Text="Data Analysis" Clicked="OnDataAnalysisClicked" Grid.Row="5" Grid.Column="1" IsVisible="{Binding IsAdminVisible}" />
+                <Button Text="Reports" Clicked="OnReportsClicked" Grid.Row="6" Grid.Column="0" IsVisible="{Binding IsAdminVisible}" />
+                <Button Text="User Management" Clicked="OnUserManagementClicked" Grid.Row="6" Grid.Column="1" IsVisible="{Binding IsAdminVisible}" />
 
             </Grid>
 
