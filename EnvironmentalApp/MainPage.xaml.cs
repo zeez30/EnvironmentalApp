@@ -100,7 +100,7 @@ namespace EnvironmentalApp
         // Event handler for the "User Management" button click.
         private async void OnUserManagementClicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new UserManagementPage()); // Navigates to the UserManagementPage.
+            await Navigation.PushAsync(new UserManagementPage(_authService)); // Navigates to the UserManagementPage.
         }
 
         // Class to represent an alert.

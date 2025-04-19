@@ -87,5 +87,20 @@ namespace EnvironmentalApp.Data
         {
             return _authLink != null;  // If the authLink exists, user is signed in
         }
+
+        public bool ChangeUserRole(string email, string newRole)
+        {
+            if (_userRoles.ContainsKey(email))
+            {
+                _userRoles[email] = newRole;
+                return true;
+            }
+            return false;
+        }
+        public List<UserInfo> GetAllUsersWithRoles()
+        {
+            return _userRoles.Select(kvp => new UserInfo { Email = kvp.Key, Role = kvp.Value }).ToList();
+        }
+
     }
 }
