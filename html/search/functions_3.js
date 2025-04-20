@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['mappage_0',['MapPage',['../class_environmental_app_1_1_map_page.html#a4d93b5a379cba7f3c524389b0f3a04cf',1,'EnvironmentalApp.MapPage.MapPage(Microsoft.Maui.Controls.Maps.Map mockMap)'],['../class_environmental_app_1_1_map_page.html#a1d1cd800e2491d26e47f09bef4206f11',1,'EnvironmentalApp.MapPage.MapPage()']]]
+  ['initializecomponent_0',['InitializeComponent',['../class_environmental_app_1_1_win_u_i_1_1_app.html#a901f2ed77bbed57d0c732de61f8ae7b0',1,'EnvironmentalApp.WinUI.App.InitializeComponent()'],['../class_environmental_app_1_1_win_u_i_1_1_app.html#a901f2ed77bbed57d0c732de61f8ae7b0',1,'EnvironmentalApp.WinUI.App.InitializeComponent()']]],
+  ['issignedin_1',['IsSignedIn',['../class_environmental_app_1_1_data_1_1_firebase_auth_service.html#ac5308d1fa2d9c5e151a889bd76eb3a9a',1,'EnvironmentalApp::Data::FirebaseAuthService']]]
 ];

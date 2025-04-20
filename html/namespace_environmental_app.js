@@ -7,6 +7,7 @@ var namespace_environmental_app =
     [ "AppDelegate", "class_environmental_app_1_1_app_delegate.html", null ],
     [ "AppShell", "class_environmental_app_1_1_app_shell.html", null ],
     [ "DataAnalysisPage", "class_environmental_app_1_1_data_analysis_page.html", null ],
+    [ "LoginPage", "class_environmental_app_1_1_login_page.html", null ],
     [ "MainActivity", "class_environmental_app_1_1_main_activity.html", null ],
     [ "MainApplication", "class_environmental_app_1_1_main_application.html", null ],
     [ "MainPage", "class_environmental_app_1_1_main_page.html", "class_environmental_app_1_1_main_page" ],
@@ -15,5 +16,5 @@ var namespace_environmental_app =
     [ "ReportsPage", "class_environmental_app_1_1_reports_page.html", null ],
     [ "Resource", "class_environmental_app_1_1_resource.html", null ],
     [ "SensorManagementPage", "class_environmental_app_1_1_sensor_management_page.html", null ],
-    [ "UserManagementPage", "class_environmental_app_1_1_user_management_page.html", null ]
+    [ "UserManagementPage", "class_environmental_app_1_1_user_management_page.html", "class_environmental_app_1_1_user_management_page" ]
 ];
