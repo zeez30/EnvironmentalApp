@@ -20,6 +20,9 @@ var hierarchy =
       [ "crc6468b6408a11370c2f.WebAuthenticatorIntermediateActivity", "classcrc6468b6408a11370c2f_1_1_web_authenticator_intermediate_activity.html", null ],
       [ "crc64ba438d8f48cf7e75.IntermediateActivity", "classcrc64ba438d8f48cf7e75_1_1_intermediate_activity.html", null ]
     ] ],
+    [ "androidx.lifecycle.ReportFragment.ActivityInitializationListener", null, [
+      [ "mono.androidx.lifecycle.ReportFragment_ActivityInitializationListenerImplementor", "classmono_1_1androidx_1_1lifecycle_1_1_report_fragment___activity_initialization_listener_implementor.html", null ]
+    ] ],
     [ "android.app.Application.ActivityLifecycleCallbacks", null, [
       [ "crc6488302ad6e9e4df1a.MauiApplication_ActivityLifecycleCallbacks", "classcrc6488302ad6e9e4df1a_1_1_maui_application___activity_lifecycle_callbacks.html", null ],
       [ "crc64ba438d8f48cf7e75.ActivityLifecycleContextListener", "classcrc64ba438d8f48cf7e75_1_1_activity_lifecycle_context_listener.html", null ]
@@ -61,6 +64,9 @@ var hierarchy =
     ] ],
     [ "android.animation.AnimatorListenerAdapter", null, [
       [ "crc64338477404e88479c.GenericAnimatorListener", "classcrc64338477404e88479c_1_1_generic_animator_listener.html", null ]
+    ] ],
+    [ "com.google.firebase.appcheck.interop.AppCheckTokenListener", null, [
+      [ "mono.com.google.firebase.appcheck.interop.AppCheckTokenListenerImplementor", "classmono_1_1com_1_1google_1_1firebase_1_1appcheck_1_1interop_1_1_app_check_token_listener_implementor.html", null ]
     ] ],
     [ "androidx.appcompat.app.AppCompatActivity", null, [
       [ "crc6477f0d89a9cfd64b1.FormsAppCompatActivity", "classcrc6477f0d89a9cfd64b1_1_1_forms_app_compat_activity.html", null ],
@@ -112,8 +118,14 @@ var hierarchy =
       [ "EnvironmentalApp.App", "class_environmental_app_1_1_app.html", null ]
     ] ],
     [ "mono.android.app.ApplicationRegistration", "classmono_1_1android_1_1app_1_1_application_registration.html", null ],
+    [ "com.google.firebase.auth.FirebaseAuth.AuthStateListener", null, [
+      [ "mono.com.google.firebase.auth.FirebaseAuth_AuthStateListenerImplementor", "classmono_1_1com_1_1google_1_1firebase_1_1auth_1_1_firebase_auth___auth_state_listener_implementor.html", null ]
+    ] ],
     [ "com.google.android.gms.common.api.internal.BackgroundDetector.BackgroundStateChangeListener", null, [
       [ "mono.com.google.android.gms.common.api.internal.BackgroundDetector_BackgroundStateChangeListenerImplementor", "classmono_1_1com_1_1google_1_1android_1_1gms_1_1common_1_1api_1_1internal_1_1_background_detecto64da446698e97cb6a400d9d5c4677c5c.html", null ]
+    ] ],
+    [ "com.google.firebase.FirebaseApp.BackgroundStateChangeListener", null, [
+      [ "mono.com.google.firebase.FirebaseApp_BackgroundStateChangeListenerImplementor", "classmono_1_1com_1_1google_1_1firebase_1_1_firebase_app___background_state_change_listener_implementor.html", null ]
     ] ],
     [ "android.widget.BaseAdapter", null, [
       [ "crc640ec207abc449b2ca.ShellSearchViewAdapter", "classcrc640ec207abc449b2ca_1_1_shell_search_view_adapter.html", null ],
@@ -173,14 +185,12 @@ var hierarchy =
     ] ],
     [ "ContentPage", null, [
       [ "EnvironmentalApp.DataAnalysisPage", "class_environmental_app_1_1_data_analysis_page.html", null ],
+      [ "EnvironmentalApp.LoginPage", "class_environmental_app_1_1_login_page.html", null ],
       [ "EnvironmentalApp.MainPage", "class_environmental_app_1_1_main_page.html", null ],
       [ "EnvironmentalApp.MapPage", "class_environmental_app_1_1_map_page.html", null ],
       [ "EnvironmentalApp.ReportsPage", "class_environmental_app_1_1_reports_page.html", null ],
       [ "EnvironmentalApp.SensorManagementPage", "class_environmental_app_1_1_sensor_management_page.html", null ],
       [ "EnvironmentalApp.UserManagementPage", "class_environmental_app_1_1_user_management_page.html", null ]
-    ] ],
-    [ "android.content.ContentProvider", null, [
-      [ "mono.MonoRuntimeProvider", "classmono_1_1_mono_runtime_provider.html", null ]
     ] ],
     [ "androidx.coordinatorlayout.widget.CoordinatorLayout", null, [
       [ "crc640ec207abc449b2ca.ShellFlyoutLayout", "classcrc640ec207abc449b2ca_1_1_shell_flyout_layout.html", null ]
@@ -224,6 +234,10 @@ var hierarchy =
     [ "android.widget.Filterable", null, [
       [ "crc640ec207abc449b2ca.ShellSearchViewAdapter", "classcrc640ec207abc449b2ca_1_1_shell_search_view_adapter.html", null ]
     ] ],
+    [ "com.google.firebase.FirebaseAppLifecycleListener", null, [
+      [ "mono.com.google.firebase.FirebaseAppLifecycleListenerImplementor", "classmono_1_1com_1_1google_1_1firebase_1_1_firebase_app_lifecycle_listener_implementor.html", null ]
+    ] ],
+    [ "EnvironmentalApp.Data.FirebaseAuthService", "class_environmental_app_1_1_data_1_1_firebase_auth_service.html", null ],
     [ "androidx.fragment.app.Fragment", null, [
       [ "crc640ec207abc449b2ca.ShellContentFragment", "classcrc640ec207abc449b2ca_1_1_shell_content_fragment.html", null ],
       [ "crc640ec207abc449b2ca.ShellFragmentContainer", "classcrc640ec207abc449b2ca_1_1_shell_fragment_container.html", null ],
@@ -270,6 +284,13 @@ var hierarchy =
       [ "crc6452ffdc5b34af3a0f.MauiHorizontalScrollView", "classcrc6452ffdc5b34af3a0f_1_1_maui_horizontal_scroll_view.html", null ],
       [ "crc6477f0d89a9cfd64b1.AHorizontalScrollView", "classcrc6477f0d89a9cfd64b1_1_1_a_horizontal_scroll_view.html", null ]
     ] ],
+    [ "com.google.firebase.auth.FirebaseAuth.IdTokenListener", null, [
+      [ "mono.com.google.firebase.auth.FirebaseAuth_IdTokenListenerImplementor", "classmono_1_1com_1_1google_1_1firebase_1_1auth_1_1_firebase_auth___id_token_listener_implementor.html", null ]
+    ] ],
+    [ "com.google.firebase.auth.internal.IdTokenListener", null, [
+      [ "mono.com.google.firebase.auth.internal.IdTokenListenerImplementor", "classmono_1_1com_1_1google_1_1firebase_1_1auth_1_1internal_1_1_id_token_listener_implementor.html", null ]
+    ] ],
+    [ "EnvironmentalApp.Data.IFirebaseAuthService", "interface_environmental_app_1_1_data_1_1_i_firebase_auth_service.html", null ],
     [ "mono.android.IGCUserPeer", null, [
       [ "androidx.appcompat.app.AlertDialog_IDialogInterfaceOnCancelListenerImplementor", "classandroidx_1_1appcompat_1_1app_1_1_alert_dialog___i_dialog_interface_on_cancel_listener_implementor.html", null ],
       [ "androidx.appcompat.app.AlertDialog_IDialogInterfaceOnClickListenerImplementor", "classandroidx_1_1appcompat_1_1app_1_1_alert_dialog___i_dialog_interface_on_click_listener_implementor.html", null ],
@@ -452,6 +473,7 @@ var hierarchy =
       [ "crc645d80431ce5f73f11.TextViewHolder", "classcrc645d80431ce5f73f11_1_1_text_view_holder.html", null ],
       [ "crc6468b6408a11370c2f.WebAuthenticatorCallbackActivity", "classcrc6468b6408a11370c2f_1_1_web_authenticator_callback_activity.html", null ],
       [ "crc6468b6408a11370c2f.WebAuthenticatorIntermediateActivity", "classcrc6468b6408a11370c2f_1_1_web_authenticator_intermediate_activity.html", null ],
+      [ "crc646cd94c0da26674bd.FirebaseAuthService", "classcrc646cd94c0da26674bd_1_1_firebase_auth_service.html", null ],
       [ "crc6477f0d89a9cfd64b1.AHorizontalScrollView", "classcrc6477f0d89a9cfd64b1_1_1_a_horizontal_scroll_view.html", null ],
       [ "crc6477f0d89a9cfd64b1.ActivityIndicatorRenderer", "classcrc6477f0d89a9cfd64b1_1_1_activity_indicator_renderer.html", null ],
       [ "crc6477f0d89a9cfd64b1.BorderDrawable", "classcrc6477f0d89a9cfd64b1_1_1_border_drawable.html", null ],
@@ -794,6 +816,7 @@ var hierarchy =
       [ "mono.androidx.fragment.app.FragmentOnAttachListenerImplementor", "classmono_1_1androidx_1_1fragment_1_1app_1_1_fragment_on_attach_listener_implementor.html", null ],
       [ "mono.androidx.fragment.app.FragmentResultListenerImplementor", "classmono_1_1androidx_1_1fragment_1_1app_1_1_fragment_result_listener_implementor.html", null ],
       [ "mono.androidx.fragment.app.strictmode.FragmentStrictMode_OnViolationListenerImplementor", "classmono_1_1androidx_1_1fragment_1_1app_1_1strictmode_1_1_fragment_strict_mode___on_violation_listener_implementor.html", null ],
+      [ "mono.androidx.lifecycle.ReportFragment_ActivityInitializationListenerImplementor", "classmono_1_1androidx_1_1lifecycle_1_1_report_fragment___activity_initialization_listener_implementor.html", null ],
       [ "mono.androidx.loader.content.Loader_OnLoadCanceledListenerImplementor", "classmono_1_1androidx_1_1loader_1_1content_1_1_loader___on_load_canceled_listener_implementor.html", null ],
       [ "mono.androidx.loader.content.Loader_OnLoadCompleteListenerImplementor", "classmono_1_1androidx_1_1loader_1_1content_1_1_loader___on_load_complete_listener_implementor.html", null ],
       [ "mono.androidx.navigation.NavController_OnDestinationChangedListenerImplementor", "classmono_1_1androidx_1_1navigation_1_1_nav_controller___on_destination_changed_listener_implementor.html", null ],
@@ -877,7 +900,14 @@ var hierarchy =
       [ "mono.com.google.android.material.slider.BaseOnSliderTouchListenerImplementor", "classmono_1_1com_1_1google_1_1android_1_1material_1_1slider_1_1_base_on_slider_touch_listener_implementor.html", null ],
       [ "mono.com.google.android.material.tabs.TabLayout_BaseOnTabSelectedListenerImplementor", "classmono_1_1com_1_1google_1_1android_1_1material_1_1tabs_1_1_tab_layout___base_on_tab_selected_listener_implementor.html", null ],
       [ "mono.com.google.android.material.textfield.TextInputLayout_OnEditTextAttachedListenerImplementor", "classmono_1_1com_1_1google_1_1android_1_1material_1_1textfield_1_1_text_input_layout___on_edit_t634d77dea66d6cb03ed63dd04ba196ea.html", null ],
-      [ "mono.com.google.android.material.textfield.TextInputLayout_OnEndIconChangedListenerImplementor", "classmono_1_1com_1_1google_1_1android_1_1material_1_1textfield_1_1_text_input_layout___on_end_icon_changed_listener_implementor.html", null ]
+      [ "mono.com.google.android.material.textfield.TextInputLayout_OnEndIconChangedListenerImplementor", "classmono_1_1com_1_1google_1_1android_1_1material_1_1textfield_1_1_text_input_layout___on_end_icon_changed_listener_implementor.html", null ],
+      [ "mono.com.google.android.play.core.listener.StateUpdatedListenerImplementor", "classmono_1_1com_1_1google_1_1android_1_1play_1_1core_1_1listener_1_1_state_updated_listener_implementor.html", null ],
+      [ "mono.com.google.firebase.FirebaseAppLifecycleListenerImplementor", "classmono_1_1com_1_1google_1_1firebase_1_1_firebase_app_lifecycle_listener_implementor.html", null ],
+      [ "mono.com.google.firebase.FirebaseApp_BackgroundStateChangeListenerImplementor", "classmono_1_1com_1_1google_1_1firebase_1_1_firebase_app___background_state_change_listener_implementor.html", null ],
+      [ "mono.com.google.firebase.appcheck.interop.AppCheckTokenListenerImplementor", "classmono_1_1com_1_1google_1_1firebase_1_1appcheck_1_1interop_1_1_app_check_token_listener_implementor.html", null ],
+      [ "mono.com.google.firebase.auth.FirebaseAuth_AuthStateListenerImplementor", "classmono_1_1com_1_1google_1_1firebase_1_1auth_1_1_firebase_auth___auth_state_listener_implementor.html", null ],
+      [ "mono.com.google.firebase.auth.FirebaseAuth_IdTokenListenerImplementor", "classmono_1_1com_1_1google_1_1firebase_1_1auth_1_1_firebase_auth___id_token_listener_implementor.html", null ],
+      [ "mono.com.google.firebase.auth.internal.IdTokenListenerImplementor", "classmono_1_1com_1_1google_1_1firebase_1_1auth_1_1internal_1_1_id_token_listener_implementor.html", null ]
     ] ],
     [ "com.microsoft.maui.ImageLoaderCallback", null, [
       [ "crc6488302ad6e9e4df1a.ImageLoaderCallbackBase_1", "classcrc6488302ad6e9e4df1a_1_1_image_loader_callback_base__1.html", null ]
@@ -977,7 +1007,6 @@ var hierarchy =
     [ "androidx.appcompat.widget.MenuItemHoverListener", null, [
       [ "mono.androidx.appcompat.widget.MenuItemHoverListenerImplementor", "classmono_1_1androidx_1_1appcompat_1_1widget_1_1_menu_item_hover_listener_implementor.html", null ]
     ] ],
-    [ "mono.MonoPackageManager_Resources", "classmono_1_1_mono_package_manager___resources.html", null ],
     [ "androidx.navigation.fragment.NavHostFragment", null, [
       [ "microsoft.maui.platform.MauiNavHostFragment", "classmicrosoft_1_1maui_1_1platform_1_1_maui_nav_host_fragment.html", null ]
     ] ],
@@ -1023,6 +1052,7 @@ var hierarchy =
       [ "crc6452ffdc5b34af3a0f.StepperHandlerManager_StepperListener", "classcrc6452ffdc5b34af3a0f_1_1_stepper_handler_manager___stepper_listener.html", null ],
       [ "crc6452ffdc5b34af3a0f.WebViewExtensions_JavascriptResult", "classcrc6452ffdc5b34af3a0f_1_1_web_view_extensions___javascript_result.html", null ],
       [ "crc645d80431ce5f73f11.MauiCarouselRecyclerView_CarouselViewOnGlobalLayoutListener", "classcrc645d80431ce5f73f11_1_1_maui_carousel_recycler_view___carousel_view_on_global_layout_listener.html", null ],
+      [ "crc646cd94c0da26674bd.FirebaseAuthService", "classcrc646cd94c0da26674bd_1_1_firebase_auth_service.html", null ],
       [ "crc6477f0d89a9cfd64b1.CarouselViewRenderer_CarouselViewwOnGlobalLayoutListener", "classcrc6477f0d89a9cfd64b1_1_1_carousel_view_renderer___carousel_vieww_on_global_layout_listener.html", null ],
       [ "crc6477f0d89a9cfd64b1.CellRenderer_RendererHolder", "classcrc6477f0d89a9cfd64b1_1_1_cell_renderer___renderer_holder.html", null ],
       [ "crc6477f0d89a9cfd64b1.DragAndDropGestureHandler", "classcrc6477f0d89a9cfd64b1_1_1_drag_and_drop_gesture_handler.html", null ],
@@ -1111,6 +1141,7 @@ var hierarchy =
       [ "mono.androidx.fragment.app.FragmentOnAttachListenerImplementor", "classmono_1_1androidx_1_1fragment_1_1app_1_1_fragment_on_attach_listener_implementor.html", null ],
       [ "mono.androidx.fragment.app.FragmentResultListenerImplementor", "classmono_1_1androidx_1_1fragment_1_1app_1_1_fragment_result_listener_implementor.html", null ],
       [ "mono.androidx.fragment.app.strictmode.FragmentStrictMode_OnViolationListenerImplementor", "classmono_1_1androidx_1_1fragment_1_1app_1_1strictmode_1_1_fragment_strict_mode___on_violation_listener_implementor.html", null ],
+      [ "mono.androidx.lifecycle.ReportFragment_ActivityInitializationListenerImplementor", "classmono_1_1androidx_1_1lifecycle_1_1_report_fragment___activity_initialization_listener_implementor.html", null ],
       [ "mono.androidx.loader.content.Loader_OnLoadCanceledListenerImplementor", "classmono_1_1androidx_1_1loader_1_1content_1_1_loader___on_load_canceled_listener_implementor.html", null ],
       [ "mono.androidx.loader.content.Loader_OnLoadCompleteListenerImplementor", "classmono_1_1androidx_1_1loader_1_1content_1_1_loader___on_load_complete_listener_implementor.html", null ],
       [ "mono.androidx.navigation.NavController_OnDestinationChangedListenerImplementor", "classmono_1_1androidx_1_1navigation_1_1_nav_controller___on_destination_changed_listener_implementor.html", null ],
@@ -1194,7 +1225,14 @@ var hierarchy =
       [ "mono.com.google.android.material.slider.BaseOnSliderTouchListenerImplementor", "classmono_1_1com_1_1google_1_1android_1_1material_1_1slider_1_1_base_on_slider_touch_listener_implementor.html", null ],
       [ "mono.com.google.android.material.tabs.TabLayout_BaseOnTabSelectedListenerImplementor", "classmono_1_1com_1_1google_1_1android_1_1material_1_1tabs_1_1_tab_layout___base_on_tab_selected_listener_implementor.html", null ],
       [ "mono.com.google.android.material.textfield.TextInputLayout_OnEditTextAttachedListenerImplementor", "classmono_1_1com_1_1google_1_1android_1_1material_1_1textfield_1_1_text_input_layout___on_edit_t634d77dea66d6cb03ed63dd04ba196ea.html", null ],
-      [ "mono.com.google.android.material.textfield.TextInputLayout_OnEndIconChangedListenerImplementor", "classmono_1_1com_1_1google_1_1android_1_1material_1_1textfield_1_1_text_input_layout___on_end_icon_changed_listener_implementor.html", null ]
+      [ "mono.com.google.android.material.textfield.TextInputLayout_OnEndIconChangedListenerImplementor", "classmono_1_1com_1_1google_1_1android_1_1material_1_1textfield_1_1_text_input_layout___on_end_icon_changed_listener_implementor.html", null ],
+      [ "mono.com.google.android.play.core.listener.StateUpdatedListenerImplementor", "classmono_1_1com_1_1google_1_1android_1_1play_1_1core_1_1listener_1_1_state_updated_listener_implementor.html", null ],
+      [ "mono.com.google.firebase.FirebaseAppLifecycleListenerImplementor", "classmono_1_1com_1_1google_1_1firebase_1_1_firebase_app_lifecycle_listener_implementor.html", null ],
+      [ "mono.com.google.firebase.FirebaseApp_BackgroundStateChangeListenerImplementor", "classmono_1_1com_1_1google_1_1firebase_1_1_firebase_app___background_state_change_listener_implementor.html", null ],
+      [ "mono.com.google.firebase.appcheck.interop.AppCheckTokenListenerImplementor", "classmono_1_1com_1_1google_1_1firebase_1_1appcheck_1_1interop_1_1_app_check_token_listener_implementor.html", null ],
+      [ "mono.com.google.firebase.auth.FirebaseAuth_AuthStateListenerImplementor", "classmono_1_1com_1_1google_1_1firebase_1_1auth_1_1_firebase_auth___auth_state_listener_implementor.html", null ],
+      [ "mono.com.google.firebase.auth.FirebaseAuth_IdTokenListenerImplementor", "classmono_1_1com_1_1google_1_1firebase_1_1auth_1_1_firebase_auth___id_token_listener_implementor.html", null ],
+      [ "mono.com.google.firebase.auth.internal.IdTokenListenerImplementor", "classmono_1_1com_1_1google_1_1firebase_1_1auth_1_1internal_1_1_id_token_listener_implementor.html", null ]
     ] ],
     [ "androidx.core.view.MenuItemCompat.OnActionExpandListener", null, [
       [ "mono.androidx.core.view.MenuItemCompat_OnActionExpandListenerImplementor", "classmono_1_1androidx_1_1core_1_1view_1_1_menu_item_compat___on_action_expand_listener_implementor.html", null ]
@@ -1319,6 +1357,7 @@ var hierarchy =
       [ "mono.androidx.core.view.inputmethod.InputConnectionCompat_OnCommitContentListenerImplementor", "classmono_1_1androidx_1_1core_1_1view_1_1inputmethod_1_1_input_connection_compat___on_commit_content_listener_implementor.html", null ]
     ] ],
     [ "com.google.android.gms.tasks.OnCompleteListener", null, [
+      [ "crc646cd94c0da26674bd.FirebaseAuthService", "classcrc646cd94c0da26674bd_1_1_firebase_auth_service.html", null ],
       [ "crc6495d4f5d63cc5c882.AwaitableTaskCompleteListener_1", "classcrc6495d4f5d63cc5c882_1_1_awaitable_task_complete_listener__1.html", null ],
       [ "mono.com.google.android.gms.tasks.OnCompleteListenerImplementor", "classmono_1_1com_1_1google_1_1android_1_1gms_1_1tasks_1_1_on_complete_listener_implementor.html", null ]
     ] ],
@@ -1665,6 +1704,8 @@ var hierarchy =
     [ "androidx.coordinatorlayout.R", "classandroidx_1_1coordinatorlayout_1_1_r.html", null ],
     [ "androidx.core.ktx.R", "classandroidx_1_1core_1_1ktx_1_1_r.html", null ],
     [ "androidx.core.R", "classandroidx_1_1core_1_1_r.html", null ],
+    [ "androidx.credentials.play.services.auth.R", "classandroidx_1_1credentials_1_1play_1_1services_1_1auth_1_1_r.html", null ],
+    [ "androidx.credentials.R", "classandroidx_1_1credentials_1_1_r.html", null ],
     [ "androidx.cursoradapter.R", "classandroidx_1_1cursoradapter_1_1_r.html", null ],
     [ "androidx.customview.poolingcontainer.R", "classandroidx_1_1customview_1_1poolingcontainer_1_1_r.html", null ],
     [ "androidx.customview.R", "classandroidx_1_1customview_1_1_r.html", null ],
@@ -1713,12 +1754,26 @@ var hierarchy =
     [ "androidx.window.R", "classandroidx_1_1window_1_1_r.html", null ],
     [ "com.bumptech.glide.gifdecoder.R", "classcom_1_1bumptech_1_1glide_1_1gifdecoder_1_1_r.html", null ],
     [ "com.bumptech.glide.R", "classcom_1_1bumptech_1_1glide_1_1_r.html", null ],
-    [ "com.companyname.environmentalapp.R", "classcom_1_1companyname_1_1environmentalapp_1_1_r.html", null ],
+    [ "com.google.android.gms.auth.api.phone.R", "classcom_1_1google_1_1android_1_1gms_1_1auth_1_1api_1_1phone_1_1_r.html", null ],
+    [ "com.google.android.gms.auth.api.R", "classcom_1_1google_1_1android_1_1gms_1_1auth_1_1api_1_1_r.html", null ],
+    [ "com.google.android.gms.auth.R", "classcom_1_1google_1_1android_1_1gms_1_1auth_1_1_r.html", null ],
     [ "com.google.android.gms.base.R", "classcom_1_1google_1_1android_1_1gms_1_1base_1_1_r.html", null ],
     [ "com.google.android.gms.common.R", "classcom_1_1google_1_1android_1_1gms_1_1common_1_1_r.html", null ],
+    [ "com.google.android.gms.fido.R", "classcom_1_1google_1_1android_1_1gms_1_1fido_1_1_r.html", null ],
     [ "com.google.android.gms.maps.R", "classcom_1_1google_1_1android_1_1gms_1_1maps_1_1_r.html", null ],
+    [ "com.google.android.gms.recaptchabase.R", "classcom_1_1google_1_1android_1_1gms_1_1recaptchabase_1_1_r.html", null ],
     [ "com.google.android.gms.tasks.R", "classcom_1_1google_1_1android_1_1gms_1_1tasks_1_1_r.html", null ],
+    [ "com.google.android.libraries.identity.googleid.R", "classcom_1_1google_1_1android_1_1libraries_1_1identity_1_1googleid_1_1_r.html", null ],
     [ "com.google.android.material.R", "classcom_1_1google_1_1android_1_1material_1_1_r.html", null ],
+    [ "com.google.android.play.core.integrity.client.R", "classcom_1_1google_1_1android_1_1play_1_1core_1_1integrity_1_1client_1_1_r.html", null ],
+    [ "com.google.android.play.corecommon.R", "classcom_1_1google_1_1android_1_1play_1_1corecommon_1_1_r.html", null ],
+    [ "com.google.android.recaptcha.R", "classcom_1_1google_1_1android_1_1recaptcha_1_1_r.html", null ],
+    [ "com.google.firebase.appcheck.interop.R", "classcom_1_1google_1_1firebase_1_1appcheck_1_1interop_1_1_r.html", null ],
+    [ "com.google.firebase.auth.internal.R", "classcom_1_1google_1_1firebase_1_1auth_1_1internal_1_1_r.html", null ],
+    [ "com.google.firebase.auth.R", "classcom_1_1google_1_1firebase_1_1auth_1_1_r.html", null ],
+    [ "com.google.firebase.components.R", "classcom_1_1google_1_1firebase_1_1components_1_1_r.html", null ],
+    [ "com.google.firebase.ktx.R", "classcom_1_1google_1_1firebase_1_1ktx_1_1_r.html", null ],
+    [ "com.google.firebase.R", "classcom_1_1google_1_1firebase_1_1_r.html", null ],
     [ "com.microsoft.maui.R", "classcom_1_1microsoft_1_1maui_1_1_r.html", null ],
     [ "android.speech.RecognitionListener", null, [
       [ "crc64d6358e7bf64fbac4.SpeechToTextImplementation_SpeechRecognitionListener", "classcrc64d6358e7bf64fbac4_1_1_speech_to_text_implementation___speech_recognition_listener.html", null ]
@@ -1788,6 +1843,9 @@ var hierarchy =
       [ "crc645d80431ce5f73f11.GridLayoutSpanSizeLookup", "classcrc645d80431ce5f73f11_1_1_grid_layout_span_size_lookup.html", null ],
       [ "crc6477f0d89a9cfd64b1.GridLayoutSpanSizeLookup", "classcrc6477f0d89a9cfd64b1_1_1_grid_layout_span_size_lookup.html", null ]
     ] ],
+    [ "com.google.android.play.core.listener.StateUpdatedListener", null, [
+      [ "mono.com.google.android.play.core.listener.StateUpdatedListenerImplementor", "classmono_1_1com_1_1google_1_1android_1_1play_1_1core_1_1listener_1_1_state_updated_listener_implementor.html", null ]
+    ] ],
     [ "com.google.android.gms.common.api.PendingResult.StatusListener", null, [
       [ "mono.com.google.android.gms.common.api.PendingResult_StatusListenerImplementor", "classmono_1_1com_1_1google_1_1android_1_1gms_1_1common_1_1api_1_1_pending_result___status_listener_implementor.html", null ]
     ] ],
@@ -1833,6 +1891,7 @@ var hierarchy =
       [ "crc64a25b61d9f8ee364f.RectEvaluator", "classcrc64a25b61d9f8ee364f_1_1_rect_evaluator.html", null ],
       [ "crc64a25b61d9f8ee364f.TransitionUtils_MatrixEvaluator", "classcrc64a25b61d9f8ee364f_1_1_transition_utils___matrix_evaluator.html", null ]
     ] ],
+    [ "EnvironmentalApp.Data.UserInfo", "class_environmental_app_1_1_data_1_1_user_info.html", null ],
     [ "android.webkit.ValueCallback", null, [
       [ "crc6452ffdc5b34af3a0f.WebViewExtensions_JavascriptResult", "classcrc6452ffdc5b34af3a0f_1_1_web_view_extensions___javascript_result.html", null ],
       [ "crc6477f0d89a9cfd64b1.WebViewRenderer_JavascriptResult", "classcrc6477f0d89a9cfd64b1_1_1_web_view_renderer___javascript_result.html", null ]

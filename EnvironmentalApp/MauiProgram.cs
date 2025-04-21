@@ -3,6 +3,7 @@ using Microsoft.Maui.Controls.Hosting;
 using CommunityToolkit.Maui;
 using CommunityToolkit.Maui.Maps;
 using System.Diagnostics;
+using EnvironmentalApp.Data;
 
 namespace EnvironmentalApp
 {
@@ -26,7 +27,8 @@ namespace EnvironmentalApp
 #if DEBUG
             builder.Logging.AddDebug();
 #endif
-
+            builder.Services.AddSingleton<FirebaseAuthService>();
+            builder.Services.AddTransient<MainPage>();
             return builder.Build();
         }
     }

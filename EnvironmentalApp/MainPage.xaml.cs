@@ -1,9 +1,11 @@
 ﻿using Microsoft.Maui.Controls;
 using System.Collections.ObjectModel;
 using System;
+using EnvironmentalApp.Data;
 
 namespace EnvironmentalApp
 {
+
     public partial class MainPage : ContentPage
     {
         // ObservableCollections to hold data that will be displayed in the UI.
@@ -11,12 +13,42 @@ namespace EnvironmentalApp
         public ObservableCollection<Alert> RecentAlerts { get; set; }
         public ObservableCollection<SensorStatus> SensorStatuses { get; set; }
 
+        public bool IsAdminVisible { get; set; }
+
+        private readonly FirebaseAuthService _authService;
+
         // Constructor for the MainPage class.
-        public MainPage()
+        public MainPage(FirebaseAuthService authService)
         {
-            InitializeComponent(); // Initializes the XAML components of the page.
-            InitializeData(); // Initializes the data for the page.
-            BindingContext = this; // Sets the binding context of the page to this instance, allowing data binding.
+            InitializeComponent();
+            InitializeData();
+            BindingContext = this;
+            _authService = authService;
+            SetRoleBasedVisibility();
+        }
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            string role = _authService.CurrentUserRole;
+            IsAdminVisible = role == "admin";
+
+            OnPropertyChanged(nameof(IsAdminVisible));
+        }
+        private void SetRoleBasedVisibility()
+        {
+            // Based on the role, show or hide admin-specific buttons
+            if (_authService.CurrentUserRole == "admin")
+            {
+                IsAdminVisible = true; // Show admin buttons
+            }
+            else
+            {
+                IsAdminVisible = false; // Hide admin buttons
+            }
+
+            // Notify the UI that bindings have been updated
+            OnPropertyChanged(nameof(IsAdminVisible));
         }
 
         // Initializes the data for the page.
@@ -38,8 +70,7 @@ namespace EnvironmentalApp
                 new SensorStatus { SensorID = "Sensor 789", Status = "Offline", AirQuality = "N/A", WaterQuality = "N/A" }
             };
 
-            
-            //sample data here is for demonstration purposes.
+            // Sample data here is for demonstration purposes.
         }
 
         // Event handler for the "View Map" button click.
@@ -69,7 +100,7 @@ namespace EnvironmentalApp
         // Event handler for the "User Management" button click.
         private async void OnUserManagementClicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new UserManagementPage()); // Navigates to the UserManagementPage.
+            await Navigation.PushAsync(new UserManagementPage(_authService)); // Navigates to the UserManagementPage.
         }
 
         // Class to represent an alert.

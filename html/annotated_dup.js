@@ -54,6 +54,16 @@ var annotated_dup =
         ] ],
         [ "R", "classandroidx_1_1core_1_1_r.html", null ]
       ] ],
+      [ "credentials", null, [
+        [ "play", null, [
+          [ "services", null, [
+            [ "auth", null, [
+              [ "R", "classandroidx_1_1credentials_1_1play_1_1services_1_1auth_1_1_r.html", null ]
+            ] ]
+          ] ]
+        ] ],
+        [ "R", "classandroidx_1_1credentials_1_1_r.html", null ]
+      ] ],
       [ "cursoradapter", null, [
         [ "R", "classandroidx_1_1cursoradapter_1_1_r.html", null ]
       ] ],
@@ -208,25 +218,42 @@ var annotated_dup =
           [ "R", "classcom_1_1bumptech_1_1glide_1_1_r.html", null ]
         ] ]
       ] ],
-      [ "companyname", null, [
-        [ "environmentalapp", null, [
-          [ "R", "classcom_1_1companyname_1_1environmentalapp_1_1_r.html", null ]
-        ] ]
-      ] ],
       [ "google", null, [
         [ "android", null, [
           [ "gms", null, [
+            [ "auth", null, [
+              [ "api", null, [
+                [ "phone", null, [
+                  [ "R", "classcom_1_1google_1_1android_1_1gms_1_1auth_1_1api_1_1phone_1_1_r.html", null ]
+                ] ],
+                [ "R", "classcom_1_1google_1_1android_1_1gms_1_1auth_1_1api_1_1_r.html", null ]
+              ] ],
+              [ "R", "classcom_1_1google_1_1android_1_1gms_1_1auth_1_1_r.html", null ]
+            ] ],
             [ "base", null, [
               [ "R", "classcom_1_1google_1_1android_1_1gms_1_1base_1_1_r.html", null ]
             ] ],
             [ "common", null, [
               [ "R", "classcom_1_1google_1_1android_1_1gms_1_1common_1_1_r.html", null ]
             ] ],
+            [ "fido", null, [
+              [ "R", "classcom_1_1google_1_1android_1_1gms_1_1fido_1_1_r.html", null ]
+            ] ],
             [ "maps", null, [
               [ "R", "classcom_1_1google_1_1android_1_1gms_1_1maps_1_1_r.html", null ]
             ] ],
+            [ "recaptchabase", null, [
+              [ "R", "classcom_1_1google_1_1android_1_1gms_1_1recaptchabase_1_1_r.html", null ]
+            ] ],
             [ "tasks", null, [
               [ "R", "classcom_1_1google_1_1android_1_1gms_1_1tasks_1_1_r.html", null ]
+            ] ]
+          ] ],
+          [ "libraries", null, [
+            [ "identity", null, [
+              [ "googleid", null, [
+                [ "R", "classcom_1_1google_1_1android_1_1libraries_1_1identity_1_1googleid_1_1_r.html", null ]
+              ] ]
             ] ]
           ] ],
           [ "material", null, [
@@ -234,7 +261,42 @@ var annotated_dup =
               [ "Snackbar_SnackbarActionClickImplementor", "classcom_1_1google_1_1android_1_1material_1_1snackbar_1_1_snackbar___snackbar_action_click_implementor.html", null ]
             ] ],
             [ "R", "classcom_1_1google_1_1android_1_1material_1_1_r.html", null ]
+          ] ],
+          [ "play", null, [
+            [ "core", null, [
+              [ "integrity", null, [
+                [ "client", null, [
+                  [ "R", "classcom_1_1google_1_1android_1_1play_1_1core_1_1integrity_1_1client_1_1_r.html", null ]
+                ] ]
+              ] ]
+            ] ],
+            [ "corecommon", null, [
+              [ "R", "classcom_1_1google_1_1android_1_1play_1_1corecommon_1_1_r.html", null ]
+            ] ]
+          ] ],
+          [ "recaptcha", null, [
+            [ "R", "classcom_1_1google_1_1android_1_1recaptcha_1_1_r.html", null ]
           ] ]
+        ] ],
+        [ "firebase", null, [
+          [ "appcheck", null, [
+            [ "interop", null, [
+              [ "R", "classcom_1_1google_1_1firebase_1_1appcheck_1_1interop_1_1_r.html", null ]
+            ] ]
+          ] ],
+          [ "auth", null, [
+            [ "internal", null, [
+              [ "R", "classcom_1_1google_1_1firebase_1_1auth_1_1internal_1_1_r.html", null ]
+            ] ],
+            [ "R", "classcom_1_1google_1_1firebase_1_1auth_1_1_r.html", null ]
+          ] ],
+          [ "components", null, [
+            [ "R", "classcom_1_1google_1_1firebase_1_1components_1_1_r.html", null ]
+          ] ],
+          [ "ktx", null, [
+            [ "R", "classcom_1_1google_1_1firebase_1_1ktx_1_1_r.html", null ]
+          ] ],
+          [ "R", "classcom_1_1google_1_1firebase_1_1_r.html", null ]
         ] ]
       ] ],
       [ "microsoft", null, [
@@ -414,6 +476,9 @@ var annotated_dup =
     [ "crc6468b6408a11370c2f", null, [
       [ "WebAuthenticatorCallbackActivity", "classcrc6468b6408a11370c2f_1_1_web_authenticator_callback_activity.html", null ],
       [ "WebAuthenticatorIntermediateActivity", "classcrc6468b6408a11370c2f_1_1_web_authenticator_intermediate_activity.html", null ]
+    ] ],
+    [ "crc646cd94c0da26674bd", null, [
+      [ "FirebaseAuthService", "classcrc646cd94c0da26674bd_1_1_firebase_auth_service.html", null ]
     ] ],
     [ "crc6477f0d89a9cfd64b1", null, [
       [ "ActivityIndicatorRenderer", "classcrc6477f0d89a9cfd64b1_1_1_activity_indicator_renderer.html", null ],
@@ -662,7 +727,10 @@ var annotated_dup =
     ] ],
     [ "EnvironmentalApp", "namespace_environmental_app.html", [
       [ "Data", "namespace_environmental_app_1_1_data.html", [
-        [ "PinCreation", "class_environmental_app_1_1_data_1_1_pin_creation.html", null ]
+        [ "FirebaseAuthService", "class_environmental_app_1_1_data_1_1_firebase_auth_service.html", "class_environmental_app_1_1_data_1_1_firebase_auth_service" ],
+        [ "IFirebaseAuthService", "interface_environmental_app_1_1_data_1_1_i_firebase_auth_service.html", null ],
+        [ "PinCreation", "class_environmental_app_1_1_data_1_1_pin_creation.html", null ],
+        [ "UserInfo", "class_environmental_app_1_1_data_1_1_user_info.html", null ]
       ] ],
       [ "EnvironmentalApp_XamlTypeInfo", "namespace_environmental_app_1_1_environmental_app___xaml_type_info.html", [
         [ "XamlMetaDataProvider", "class_environmental_app_1_1_environmental_app___xaml_type_info_1_1_xaml_meta_data_provider.html", "class_environmental_app_1_1_environmental_app___xaml_type_info_1_1_xaml_meta_data_provider" ]
@@ -674,6 +742,7 @@ var annotated_dup =
       [ "AppDelegate", "class_environmental_app_1_1_app_delegate.html", null ],
       [ "AppShell", "class_environmental_app_1_1_app_shell.html", null ],
       [ "DataAnalysisPage", "class_environmental_app_1_1_data_analysis_page.html", null ],
+      [ "LoginPage", "class_environmental_app_1_1_login_page.html", null ],
       [ "MainActivity", "class_environmental_app_1_1_main_activity.html", null ],
       [ "MainApplication", "class_environmental_app_1_1_main_application.html", null ],
       [ "MainPage", "class_environmental_app_1_1_main_page.html", "class_environmental_app_1_1_main_page" ],
@@ -682,7 +751,7 @@ var annotated_dup =
       [ "ReportsPage", "class_environmental_app_1_1_reports_page.html", null ],
       [ "Resource", "class_environmental_app_1_1_resource.html", null ],
       [ "SensorManagementPage", "class_environmental_app_1_1_sensor_management_page.html", null ],
-      [ "UserManagementPage", "class_environmental_app_1_1_user_management_page.html", null ]
+      [ "UserManagementPage", "class_environmental_app_1_1_user_management_page.html", "class_environmental_app_1_1_user_management_page" ]
     ] ],
     [ "microsoft", null, [
       [ "maui", null, [
@@ -791,6 +860,9 @@ var annotated_dup =
             [ "FragmentOnAttachListenerImplementor", "classmono_1_1androidx_1_1fragment_1_1app_1_1_fragment_on_attach_listener_implementor.html", null ],
             [ "FragmentResultListenerImplementor", "classmono_1_1androidx_1_1fragment_1_1app_1_1_fragment_result_listener_implementor.html", null ]
           ] ]
+        ] ],
+        [ "lifecycle", null, [
+          [ "ReportFragment_ActivityInitializationListenerImplementor", "classmono_1_1androidx_1_1lifecycle_1_1_report_fragment___activity_initialization_listener_implementor.html", null ]
         ] ],
         [ "loader", null, [
           [ "content", null, [
@@ -973,11 +1045,32 @@ var annotated_dup =
                 [ "TextInputLayout_OnEditTextAttachedListenerImplementor", "classmono_1_1com_1_1google_1_1android_1_1material_1_1textfield_1_1_text_input_layout___on_edit_t634d77dea66d6cb03ed63dd04ba196ea.html", null ],
                 [ "TextInputLayout_OnEndIconChangedListenerImplementor", "classmono_1_1com_1_1google_1_1android_1_1material_1_1textfield_1_1_text_input_layout___on_end_icon_changed_listener_implementor.html", null ]
               ] ]
+            ] ],
+            [ "play", null, [
+              [ "core", null, [
+                [ "listener", null, [
+                  [ "StateUpdatedListenerImplementor", "classmono_1_1com_1_1google_1_1android_1_1play_1_1core_1_1listener_1_1_state_updated_listener_implementor.html", null ]
+                ] ]
+              ] ]
             ] ]
+          ] ],
+          [ "firebase", null, [
+            [ "appcheck", null, [
+              [ "interop", null, [
+                [ "AppCheckTokenListenerImplementor", "classmono_1_1com_1_1google_1_1firebase_1_1appcheck_1_1interop_1_1_app_check_token_listener_implementor.html", null ]
+              ] ]
+            ] ],
+            [ "auth", null, [
+              [ "internal", null, [
+                [ "IdTokenListenerImplementor", "classmono_1_1com_1_1google_1_1firebase_1_1auth_1_1internal_1_1_id_token_listener_implementor.html", null ]
+              ] ],
+              [ "FirebaseAuth_AuthStateListenerImplementor", "classmono_1_1com_1_1google_1_1firebase_1_1auth_1_1_firebase_auth___auth_state_listener_implementor.html", null ],
+              [ "FirebaseAuth_IdTokenListenerImplementor", "classmono_1_1com_1_1google_1_1firebase_1_1auth_1_1_firebase_auth___id_token_listener_implementor.html", null ]
+            ] ],
+            [ "FirebaseApp_BackgroundStateChangeListenerImplementor", "classmono_1_1com_1_1google_1_1firebase_1_1_firebase_app___background_state_change_listener_implementor.html", null ],
+            [ "FirebaseAppLifecycleListenerImplementor", "classmono_1_1com_1_1google_1_1firebase_1_1_firebase_app_lifecycle_listener_implementor.html", null ]
           ] ]
         ] ]
-      ] ],
-      [ "MonoPackageManager_Resources", "classmono_1_1_mono_package_manager___resources.html", null ],
-      [ "MonoRuntimeProvider", "classmono_1_1_mono_runtime_provider.html", null ]
+      ] ]
     ] ]
 ];

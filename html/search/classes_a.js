@@ -15,5 +15,6 @@ var searchData=
   ['loader_5fonloadcanceledlistenerimplementor_12',['Loader_OnLoadCanceledListenerImplementor',['../classmono_1_1androidx_1_1loader_1_1content_1_1_loader___on_load_canceled_listener_implementor.html',1,'mono::androidx::loader::content']]],
   ['loader_5fonloadcompletelistenerimplementor_13',['Loader_OnLoadCompleteListenerImplementor',['../classmono_1_1androidx_1_1loader_1_1content_1_1_loader___on_load_complete_listener_implementor.html',1,'mono::androidx::loader::content']]],
   ['localizeddigitskeylistener_14',['LocalizedDigitsKeyListener',['../classcrc6452ffdc5b34af3a0f_1_1_localized_digits_key_listener.html',1,'crc6452ffdc5b34af3a0f']]],
-  ['locationsource_5fonlocationchangedlistenerimplementor_15',['LocationSource_OnLocationChangedListenerImplementor',['../classmono_1_1com_1_1google_1_1android_1_1gms_1_1maps_1_1_location_source___on_location_changed_listener_implementor.html',1,'mono::com::google::android::gms::maps']]]
+  ['locationsource_5fonlocationchangedlistenerimplementor_15',['LocationSource_OnLocationChangedListenerImplementor',['../classmono_1_1com_1_1google_1_1android_1_1gms_1_1maps_1_1_location_source___on_location_changed_listener_implementor.html',1,'mono::com::google::android::gms::maps']]],
+  ['loginpage_16',['LoginPage',['../class_environmental_app_1_1_login_page.html',1,'EnvironmentalApp']]]
 ];
