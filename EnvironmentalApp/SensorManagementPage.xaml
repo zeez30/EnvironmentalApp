@@ -1,12 +1,49 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:EnvironmentalApp"
+             xmlns:data="clr-namespace:EnvironmentalApp.Data"
              x:Class="EnvironmentalApp.SensorManagementPage"
-             Title="SensorManagementPage">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+             Title="Sensor Management">
+
+    <Grid>
+        <CollectionView x:Name="SensorsCollectionView"
+                        ItemsSource="{Binding Sensors}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="data:Sensor">
+                    <Grid Padding="10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+
+                        <Label Text="{Binding Name}"
+                               FontAttributes="Bold"
+                               Grid.Row="0"
+                               Grid.ColumnSpan="2" />
+
+                        <Label Text="Type:"
+                               Grid.Row="1"
+                               Grid.Column="0" />
+                        <Label Text="{Binding Type}"
+                               Grid.Row="1"
+                               Grid.Column="1" />
+
+                        <Label Text="Status:"
+                               Grid.Row="2"
+                               Grid.Column="0" />
+                        <Label Text="{Binding Status}"
+                               Grid.Row="2"
+                               Grid.Column="1" />
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
+
 </ContentPage>
