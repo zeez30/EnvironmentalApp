@@ -7,21 +7,37 @@ using System;
 
 namespace EnvironmentalApp.Services
 {
+    /// <summary>
+    /// Provides services for interacting with the database, including initialization and data import from Excel files.
+    /// </summary>
     public class DatabaseService
     {
         private readonly AppDbContext _dbContext;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="DatabaseService"/> class.
+        /// </summary>
+        /// <param name="dbContext">The application's database context, injected via dependency injection.</param>
         public DatabaseService(AppDbContext dbContext) // Inject the DbContext
         {
             _dbContext = dbContext;
         }
 
+        /// <summary>
+        /// Asynchronously initializes the database by applying any pending migrations.
+        /// This ensures the database schema is up-to-date.
+        /// </summary>
+        /// <returns>A <see cref="Task"/> representing the asynchronous operation.</returns>
         public async Task InitializeDatabaseAsync()
         {
             // Check if the database exists, if not, create it and apply migrations
             await _dbContext.Database.MigrateAsync(); // This will create the database and apply pending migrations
         }
 
+        /// <summary>
+        /// Asynchronously imports data from several Excel files into the corresponding database tables.
+        /// </summary>
+        /// <returns>A <see cref="Task"/> representing the asynchronous operation.</returns>
         public async Task ImportExcelDataAsync()
         {
             await ImportAirQualityDataAsync("Air_quality.xlsx");
@@ -30,6 +46,11 @@ namespace EnvironmentalApp.Services
             await ImportWeatherDataAsync("WeatherData.xlsx");
         }
 
+        /// <summary>
+        /// Asynchronously imports air quality data from an Excel file into the AirQualityDatas table.
+        /// </summary>
+        /// <param name="fileName">The name of the Excel file to import.</param>
+        /// <returns>A <see cref="Task"/> representing the asynchronous operation.</returns>
         private async Task ImportAirQualityDataAsync(string fileName)
         {
             try
@@ -87,6 +108,11 @@ namespace EnvironmentalApp.Services
 
         }
 
+        /// <summary>
+        /// Asynchronously imports metadata from an Excel file into the MetaDatas table.
+        /// </summary>
+        /// <param name="fileName">The name of the Excel file to import.</param>
+        /// <returns>A <see cref="Task"/> representing the asynchronous operation.</returns>
         private async Task ImportMetaDataAsync(string fileName)
         {
             try
@@ -113,11 +139,11 @@ namespace EnvironmentalApp.Services
                         try
                         {
                             // Read data from the cells
-                            string category = worksheet.Cell(row, 1).GetString();       // Column A
-                            string quantity = worksheet.Cell(row, 2).GetString();       // Column B
-                            string symbol = worksheet.Cell(row, 3).GetString();         // Column C
-                            string unit = worksheet.Cell(row, 4).GetString();           // Column D
-                            string unitDescription = worksheet.Cell(row, 5).GetString();  // Column E
+                            string category = worksheet.Cell(row, 1).GetString();        // Column A
+                            string quantity = worksheet.Cell(row, 2).GetString();        // Column B
+                            string symbol = worksheet.Cell(row, 3).GetString();          // Column C
+                            string unit = worksheet.Cell(row, 4).GetString();            // Column D
+                            string unitDescription = worksheet.Cell(row, 5).GetString(); // Column E
                             string measurementFrequency = worksheet.Cell(row, 6).GetString(); // Column F
 
                             // Read SafeLevel as nullable double
@@ -127,7 +153,7 @@ namespace EnvironmentalApp.Services
                                 safeLevel = parsedSafeLevel;
                             }
 
-                            string reference = worksheet.Cell(row, 8).GetString();       // Column H
+                            string reference = worksheet.Cell(row, 8).GetString();        // Column H
                             string sensor = worksheet.Cell(row, 9).GetString();          // Column I
                             string url = worksheet.Cell(row, 10).GetString();            // Column J
 
@@ -165,6 +191,11 @@ namespace EnvironmentalApp.Services
             }
         }
 
+        /// <summary>
+        /// Asynchronously imports water quality data from an Excel file into the WaterQualityDatas table.
+        /// </summary>
+        /// <param name="fileName">The name of the Excel file to import.</param>
+        /// <returns>A <see cref="Task"/> representing the asynchronous operation.</returns>
         private async Task ImportWaterQualityDataAsync(string fileName)
         {
             try
@@ -226,7 +257,7 @@ namespace EnvironmentalApp.Services
                             double nitrate = worksheet.Cell(row, 3).GetDouble();    // Column C
                             double nitrite = worksheet.Cell(row, 4).GetDouble();    // Column D
                             double phosphate = worksheet.Cell(row, 5).GetDouble();  // Column E
-                            double ec = worksheet.Cell(row, 6).GetDouble();         // Column F
+                            double ec = worksheet.Cell(row, 6).GetDouble();        // Column F
 
                             // Create a new WaterQualityData object
                             var waterQualityData = new WaterQualityData
@@ -258,6 +289,11 @@ namespace EnvironmentalApp.Services
             }
         }
 
+        /// <summary>
+        /// Asynchronously imports weather data from an Excel file into the WeatherDatas table.
+        /// </summary>
+        /// <param name="fileName">The name of the Excel file to import.</param>
+        /// <returns>A <see cref="Task"/> representing the asynchronous operation.</returns>
         private async Task ImportWeatherDataAsync(string fileName)
         {
             try
