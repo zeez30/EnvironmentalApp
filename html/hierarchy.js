@@ -1811,6 +1811,7 @@ var hierarchy =
     [ "android.widget.SeekBar", null, [
       [ "crc6477f0d89a9cfd64b1.FormsSeekBar", "classcrc6477f0d89a9cfd64b1_1_1_forms_seek_bar.html", null ]
     ] ],
+    [ "EnvironmentalApp.Data.Sensor", "class_environmental_app_1_1_data_1_1_sensor.html", null ],
     [ "android.hardware.SensorEventListener", null, [
       [ "crc64f62664462a8937a9.AccelerometerListener", "classcrc64f62664462a8937a9_1_1_accelerometer_listener.html", null ],
       [ "crc64f62664462a8937a9.BarometerListener", "classcrc64f62664462a8937a9_1_1_barometer_listener.html", null ],
@@ -1819,6 +1820,7 @@ var hierarchy =
       [ "crc64f62664462a8937a9.OrientationSensorListener", "classcrc64f62664462a8937a9_1_1_orientation_sensor_listener.html", null ],
       [ "crc64f62664462a8937a9.SensorListener", "classcrc64f62664462a8937a9_1_1_sensor_listener.html", null ]
     ] ],
+    [ "EnvironmentalApp.Services.SensorService", "class_environmental_app_1_1_services_1_1_sensor_service.html", null ],
     [ "EnvironmentalApp.MainPage.SensorStatus", "class_environmental_app_1_1_main_page_1_1_sensor_status.html", null ],
     [ "android.app.Service", null, [
       [ "crc64396a3fe5f8138e3f.KeepAliveService", "classcrc64396a3fe5f8138e3f_1_1_keep_alive_service.html", null ]

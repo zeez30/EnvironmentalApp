@@ -35,7 +35,8 @@ var NAVTREE =
       [ "Class Members", "functions.html", [
         [ "All", "functions.html", "functions_dup" ],
         [ "Functions", "functions_func.html", null ],
-        [ "Variables", "functions_vars.html", "functions_vars" ]
+        [ "Variables", "functions_vars.html", "functions_vars" ],
+        [ "Properties", "functions_prop.html", null ]
       ] ]
     ] ]
   ] ]
@@ -44,8 +45,8 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"classcrc6452ffdc5b34af3a0f_1_1_maui_picker.html",
-"classcrc64e53d2f592022988e_1_1_connectivity_broadcast_receiver.html"
+"classcrc6452ffdc5b34af3a0f_1_1_maui_accessibility_delegate_compat.html",
+"classcrc64e1fb321c08285b90_1_1_switch_cell_view.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronization';

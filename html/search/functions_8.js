@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['validateuserasync_0',['ValidateUserAsync',['../class_environmental_app_1_1_data_1_1_firebase_auth_service.html#a2cbbc3f85e2667e00bdf7b391a328755',1,'EnvironmentalApp::Data::FirebaseAuthService']]]
+  ['usermanagementpage_0',['UserManagementPage',['../class_environmental_app_1_1_user_management_page.html#ac05b6581b3e7f3b5e88f2edd578da5bb',1,'EnvironmentalApp::UserManagementPage']]]
 ];

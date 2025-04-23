@@ -59,6 +59,10 @@ namespace EnvironmentalApp.Services
             return mockSensors;
         }
 
+        /// <summary>
+        /// Detects anomalies in the sensor data.
+        /// </summary>
+        /// <param name="sensors"></param>
         public void DetectAnomalies(ObservableCollection<Sensor> sensors)
         {
             foreach (var sensor in sensors)
