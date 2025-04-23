@@ -28,28 +28,61 @@
                                 <RowDefinition Height="Auto" />
                                 <RowDefinition Height="Auto" />
                                 <RowDefinition Height="Auto" />
-                                <!-- For anomaly reason -->
                             </Grid.RowDefinitions>
 
+                            <!-- Name -->
                             <Label Text="{Binding Name}"
                    FontAttributes="Bold"
                    Grid.Row="0"
-                   Grid.ColumnSpan="2" />
+                   Grid.ColumnSpan="2">
+                                <Label.Triggers>
+                                    <DataTrigger TargetType="Label" Binding="{Binding IsAnomalous}" Value="True">
+                                        <Setter Property="TextColor" Value="Black" />
+                                    </DataTrigger>
+                                </Label.Triggers>
+                            </Label>
 
+                            <!-- Type -->
                             <Label Text="Type:"
                    Grid.Row="1"
-                   Grid.Column="0" />
+                   Grid.Column="0">
+                                <Label.Triggers>
+                                    <DataTrigger TargetType="Label" Binding="{Binding IsAnomalous}" Value="True">
+                                        <Setter Property="TextColor" Value="Black" />
+                                    </DataTrigger>
+                                </Label.Triggers>
+                            </Label>
                             <Label Text="{Binding Type}"
                    Grid.Row="1"
-                   Grid.Column="1" />
+                   Grid.Column="1">
+                                <Label.Triggers>
+                                    <DataTrigger TargetType="Label" Binding="{Binding IsAnomalous}" Value="True">
+                                        <Setter Property="TextColor" Value="Black" />
+                                    </DataTrigger>
+                                </Label.Triggers>
+                            </Label>
 
+                            <!-- Status -->
                             <Label Text="Status:"
                    Grid.Row="2"
-                   Grid.Column="0" />
+                   Grid.Column="0">
+                                <Label.Triggers>
+                                    <DataTrigger TargetType="Label" Binding="{Binding IsAnomalous}" Value="True">
+                                        <Setter Property="TextColor" Value="Black" />
+                                    </DataTrigger>
+                                </Label.Triggers>
+                            </Label>
                             <Label Text="{Binding Status}"
                    Grid.Row="2"
-                   Grid.Column="1" />
+                   Grid.Column="1">
+                                <Label.Triggers>
+                                    <DataTrigger TargetType="Label" Binding="{Binding IsAnomalous}" Value="True">
+                                        <Setter Property="TextColor" Value="Black" />
+                                    </DataTrigger>
+                                </Label.Triggers>
+                            </Label>
 
+                            <!-- Anomaly Reason (stays red) -->
                             <Label Text="{Binding AnomalyReason}"
                    TextColor="Red"
                    FontAttributes="Italic"
@@ -59,6 +92,7 @@
                         </Grid>
                     </Frame>
                 </DataTemplate>
+
             </CollectionView.ItemTemplate>
         </CollectionView>
     </Grid>
