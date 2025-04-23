@@ -1,0 +1,110 @@
+\doxysection{Environmental\+App.\+Data.\+Firebase\+Auth\+Service Class Reference}
+\hypertarget{class_environmental_app_1_1_data_1_1_firebase_auth_service}{}\label{class_environmental_app_1_1_data_1_1_firebase_auth_service}\index{EnvironmentalApp.Data.FirebaseAuthService@{EnvironmentalApp.Data.FirebaseAuthService}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+Task$<$ bool $>$ \mbox{\hyperlink{class_environmental_app_1_1_data_1_1_firebase_auth_service_a2cbbc3f85e2667e00bdf7b391a328755}{Validate\+User\+Async}} (string email, string password)
+\begin{DoxyCompactList}\small\item\em Validate user credentials against the dictionary. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_environmental_app_1_1_data_1_1_firebase_auth_service_a3509ab1611a4168201ab6695b6aa6004}{Sign\+Out}} ()
+\begin{DoxyCompactList}\small\item\em Signs out the user by clearing the auth link. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_environmental_app_1_1_data_1_1_firebase_auth_service_ac5308d1fa2d9c5e151a889bd76eb3a9a}{Is\+Signed\+In}} ()
+\begin{DoxyCompactList}\small\item\em Checks if user is signed in by checking if the auth link exists. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_environmental_app_1_1_data_1_1_firebase_auth_service_ab09b619fb11e1318b4cbfe1cc216fc5b}{Change\+User\+Role}} (string email, string new\+Role)
+\begin{DoxyCompactList}\small\item\em Change the role of a user based on their email. \end{DoxyCompactList}\item 
+List$<$ \mbox{\hyperlink{class_environmental_app_1_1_data_1_1_user_info}{User\+Info}} $>$ \mbox{\hyperlink{class_environmental_app_1_1_data_1_1_firebase_auth_service_a8c702a64aaa5716622026a5be3dbf0cc}{Get\+All\+Users\+With\+Roles}} ()
+\begin{DoxyCompactList}\small\item\em Fetch all users with their roles. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_environmental_app_1_1_data_1_1_firebase_auth_service_afa0fb8deb4b00d15a10f0caed0d49ce0}\label{class_environmental_app_1_1_data_1_1_firebase_auth_service_afa0fb8deb4b00d15a10f0caed0d49ce0} 
+string {\bfseries Current\+User\+Role}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_environmental_app_1_1_data_1_1_firebase_auth_service_ab09b619fb11e1318b4cbfe1cc216fc5b}\index{EnvironmentalApp.Data.FirebaseAuthService@{EnvironmentalApp.Data.FirebaseAuthService}!ChangeUserRole@{ChangeUserRole}}
+\index{ChangeUserRole@{ChangeUserRole}!EnvironmentalApp.Data.FirebaseAuthService@{EnvironmentalApp.Data.FirebaseAuthService}}
+\doxysubsubsection{\texorpdfstring{ChangeUserRole()}{ChangeUserRole()}}
+{\footnotesize\ttfamily \label{class_environmental_app_1_1_data_1_1_firebase_auth_service_ab09b619fb11e1318b4cbfe1cc216fc5b} 
+bool Environmental\+App.\+Data.\+Firebase\+Auth\+Service.\+Change\+User\+Role (\begin{DoxyParamCaption}\item[{string}]{email}{, }\item[{string}]{new\+Role}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Change the role of a user based on their email. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em email} & User\textquotesingle{}s email\\
+\hline
+{\em new\+Role} & New Role to be assigned\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if email has been changed
+\end{DoxyReturn}
+\Hypertarget{class_environmental_app_1_1_data_1_1_firebase_auth_service_a8c702a64aaa5716622026a5be3dbf0cc}\index{EnvironmentalApp.Data.FirebaseAuthService@{EnvironmentalApp.Data.FirebaseAuthService}!GetAllUsersWithRoles@{GetAllUsersWithRoles}}
+\index{GetAllUsersWithRoles@{GetAllUsersWithRoles}!EnvironmentalApp.Data.FirebaseAuthService@{EnvironmentalApp.Data.FirebaseAuthService}}
+\doxysubsubsection{\texorpdfstring{GetAllUsersWithRoles()}{GetAllUsersWithRoles()}}
+{\footnotesize\ttfamily \label{class_environmental_app_1_1_data_1_1_firebase_auth_service_a8c702a64aaa5716622026a5be3dbf0cc} 
+List$<$ \mbox{\hyperlink{class_environmental_app_1_1_data_1_1_user_info}{User\+Info}} $>$ Environmental\+App.\+Data.\+Firebase\+Auth\+Service.\+Get\+All\+Users\+With\+Roles (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Fetch all users with their roles. 
+
+\begin{DoxyReturn}{Returns}
+all users and their roles
+\end{DoxyReturn}
+\Hypertarget{class_environmental_app_1_1_data_1_1_firebase_auth_service_ac5308d1fa2d9c5e151a889bd76eb3a9a}\index{EnvironmentalApp.Data.FirebaseAuthService@{EnvironmentalApp.Data.FirebaseAuthService}!IsSignedIn@{IsSignedIn}}
+\index{IsSignedIn@{IsSignedIn}!EnvironmentalApp.Data.FirebaseAuthService@{EnvironmentalApp.Data.FirebaseAuthService}}
+\doxysubsubsection{\texorpdfstring{IsSignedIn()}{IsSignedIn()}}
+{\footnotesize\ttfamily \label{class_environmental_app_1_1_data_1_1_firebase_auth_service_ac5308d1fa2d9c5e151a889bd76eb3a9a} 
+bool Environmental\+App.\+Data.\+Firebase\+Auth\+Service.\+Is\+Signed\+In (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Checks if user is signed in by checking if the auth link exists. 
+
+\begin{DoxyReturn}{Returns}
+Boolean
+\end{DoxyReturn}
+\Hypertarget{class_environmental_app_1_1_data_1_1_firebase_auth_service_a3509ab1611a4168201ab6695b6aa6004}\index{EnvironmentalApp.Data.FirebaseAuthService@{EnvironmentalApp.Data.FirebaseAuthService}!SignOut@{SignOut}}
+\index{SignOut@{SignOut}!EnvironmentalApp.Data.FirebaseAuthService@{EnvironmentalApp.Data.FirebaseAuthService}}
+\doxysubsubsection{\texorpdfstring{SignOut()}{SignOut()}}
+{\footnotesize\ttfamily \label{class_environmental_app_1_1_data_1_1_firebase_auth_service_a3509ab1611a4168201ab6695b6aa6004} 
+void Environmental\+App.\+Data.\+Firebase\+Auth\+Service.\+Sign\+Out (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Signs out the user by clearing the auth link. 
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Invalid\+Operation\+Exception} & Failed to sign out\\
+\hline
+\end{DoxyExceptions}
+\Hypertarget{class_environmental_app_1_1_data_1_1_firebase_auth_service_a2cbbc3f85e2667e00bdf7b391a328755}\index{EnvironmentalApp.Data.FirebaseAuthService@{EnvironmentalApp.Data.FirebaseAuthService}!ValidateUserAsync@{ValidateUserAsync}}
+\index{ValidateUserAsync@{ValidateUserAsync}!EnvironmentalApp.Data.FirebaseAuthService@{EnvironmentalApp.Data.FirebaseAuthService}}
+\doxysubsubsection{\texorpdfstring{ValidateUserAsync()}{ValidateUserAsync()}}
+{\footnotesize\ttfamily \label{class_environmental_app_1_1_data_1_1_firebase_auth_service_a2cbbc3f85e2667e00bdf7b391a328755} 
+Task$<$ bool $>$ Environmental\+App.\+Data.\+Firebase\+Auth\+Service.\+Validate\+User\+Async (\begin{DoxyParamCaption}\item[{string}]{email}{, }\item[{string}]{password}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Validate user credentials against the dictionary. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em email} & User\textquotesingle{}s email\\
+\hline
+{\em password} & User\textquotesingle{}s password\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Environmental\+App/\+Data/Firebase\+Auth\+Service.\+cs\end{DoxyCompactItemize}

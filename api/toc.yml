@@ -1,0 +1,59 @@
+### YamlMime:TableOfContent
+items:
+- uid: EnvironmentalApp
+  name: EnvironmentalApp
+  type: Namespace
+  items:
+  - uid: EnvironmentalApp.App
+    name: App
+    type: Class
+  - uid: EnvironmentalApp.AppShell
+    name: AppShell
+    type: Class
+  - uid: EnvironmentalApp.DataAnalysisPage
+    name: DataAnalysisPage
+    type: Class
+  - uid: EnvironmentalApp.MainActivity
+    name: MainActivity
+    type: Class
+  - uid: EnvironmentalApp.MainApplication
+    name: MainApplication
+    type: Class
+  - uid: EnvironmentalApp.MainPage
+    name: MainPage
+    type: Class
+  - uid: EnvironmentalApp.MainPage.Alert
+    name: MainPage.Alert
+    type: Class
+  - uid: EnvironmentalApp.MainPage.SensorStatus
+    name: MainPage.SensorStatus
+    type: Class
+  - uid: EnvironmentalApp.MapPage
+    name: MapPage
+    type: Class
+  - uid: EnvironmentalApp.MauiProgram
+    name: MauiProgram
+    type: Class
+  - uid: EnvironmentalApp.ReportsPage
+    name: ReportsPage
+    type: Class
+  - uid: EnvironmentalApp.Resource
+    name: Resource
+    type: Class
+  - uid: EnvironmentalApp.SensorManagementPage
+    name: SensorManagementPage
+    type: Class
+  - uid: EnvironmentalApp.UserManagementPage
+    name: UserManagementPage
+    type: Class
+- uid: EnvironmentalApp.Tests
+  name: EnvironmentalApp.Tests
+  type: Namespace
+  items:
+  - uid: EnvironmentalApp.Tests.MapPageTests
+    name: MapPageTests
+    type: Class
+  - uid: EnvironmentalApp.Tests.Resource
+    name: Resource
+    type: Class
+memberLayout: SamePage
