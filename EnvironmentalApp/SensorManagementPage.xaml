@@ -11,36 +11,53 @@
                         ItemsSource="{Binding Sensors}">
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="data:Sensor">
-                    <Grid Padding="10">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto" />
-                            <ColumnDefinition Width="*" />
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="Auto" />
-                        </Grid.RowDefinitions>
+                    <Frame Padding="10" Margin="5" HasShadow="True" CornerRadius="10">
+                        <Frame.Triggers>
+                            <DataTrigger TargetType="Frame" Binding="{Binding IsAnomalous}" Value="True">
+                                <Setter Property="BackgroundColor" Value="MistyRose" />
+                            </DataTrigger>
+                        </Frame.Triggers>
 
-                        <Label Text="{Binding Name}"
-                               FontAttributes="Bold"
-                               Grid.Row="0"
-                               Grid.ColumnSpan="2" />
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <!-- For anomaly reason -->
+                            </Grid.RowDefinitions>
 
-                        <Label Text="Type:"
-                               Grid.Row="1"
-                               Grid.Column="0" />
-                        <Label Text="{Binding Type}"
-                               Grid.Row="1"
-                               Grid.Column="1" />
+                            <Label Text="{Binding Name}"
+                   FontAttributes="Bold"
+                   Grid.Row="0"
+                   Grid.ColumnSpan="2" />
 
-                        <Label Text="Status:"
-                               Grid.Row="2"
-                               Grid.Column="0" />
-                        <Label Text="{Binding Status}"
-                               Grid.Row="2"
-                               Grid.Column="1" />
-                    </Grid>
+                            <Label Text="Type:"
+                   Grid.Row="1"
+                   Grid.Column="0" />
+                            <Label Text="{Binding Type}"
+                   Grid.Row="1"
+                   Grid.Column="1" />
+
+                            <Label Text="Status:"
+                   Grid.Row="2"
+                   Grid.Column="0" />
+                            <Label Text="{Binding Status}"
+                   Grid.Row="2"
+                   Grid.Column="1" />
+
+                            <Label Text="{Binding AnomalyReason}"
+                   TextColor="Red"
+                   FontAttributes="Italic"
+                   IsVisible="{Binding IsAnomalous}"
+                   Grid.Row="3"
+                   Grid.ColumnSpan="2" />
+                        </Grid>
+                    </Frame>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>

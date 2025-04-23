@@ -59,6 +59,24 @@ namespace EnvironmentalApp.Services
             return mockSensors;
         }
 
+        public void DetectAnomalies(ObservableCollection<Sensor> sensors)
+        {
+            foreach (var sensor in sensors)
+            {
+                sensor.IsAnomalous = false; // Reset
+
+                if (sensor.Status == "Offline" || sensor.Status == "Malfunctioning")
+                {
+                    sensor.IsAnomalous = true;
+                    sensor.AnomalyReason = $"Sensor is marked as {sensor.Status}";
+                }
+                else if ((DateTime.Now - sensor.LastReadingTimestamp).TotalMinutes > 30)
+                {
+                    sensor.IsAnomalous = true;
+                    sensor.AnomalyReason = "Sensor has not reported in over 30 minutes.";
+                }
+            }
+        }
 
     }
 }
