@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8"?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:EnvironmentalApp"
@@ -6,44 +6,72 @@
              x:Class="EnvironmentalApp.SensorManagementPage"
              Title="Sensor Management">
 
-    <Grid>
+    <Grid RowDefinitions="Auto, *">
+        <Label Text="Sensor List and Maintenance Schedule" FontSize="Large" Padding="10" Grid.Row="0"/>
+
         <CollectionView x:Name="SensorsCollectionView"
-                        ItemsSource="{Binding Sensors}">
+                        ItemsSource="{Binding Sensors}"
+                        Grid.Row="1">
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="data:Sensor">
-                    <Grid Padding="10">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto" />
-                            <ColumnDefinition Width="*" />
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="Auto" />
-                        </Grid.RowDefinitions>
+                    <!-- Use a Border or Frame for better visual separation -->
+                    <Border StrokeShape="RoundRectangle 5" Stroke="LightGray" StrokeThickness="1" Padding="10" Margin="5">
+                        <VerticalStackLayout Spacing="5">
+                            <Label Text="{Binding Name}" FontAttributes="Bold" FontSize="Medium" />
+                            <Grid ColumnDefinitions="Auto, *" RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, Auto" ColumnSpacing="10">
+                                <!-- Basic Info -->
+                                <Label Text="Type:" Grid.Row="0" Grid.Column="0" FontAttributes="Bold"/>
+                                <Label Text="{Binding Type}" Grid.Row="0" Grid.Column="1" />
 
-                        <Label Text="{Binding Name}"
-                               FontAttributes="Bold"
-                               Grid.Row="0"
-                               Grid.ColumnSpan="2" />
+                                <Label Text="Status:" Grid.Row="1" Grid.Column="0" FontAttributes="Bold"/>
+                                <Label Text="{Binding Status}" Grid.Row="1" Grid.Column="1" TextColor="{Binding Status, Converter={StaticResource StatusToColorConverter}}" />
+                                <!-- Add converter later if needed -->
 
-                        <Label Text="Type:"
-                               Grid.Row="1"
-                               Grid.Column="0" />
-                        <Label Text="{Binding Type}"
-                               Grid.Row="1"
-                               Grid.Column="1" />
+                                <Label Text="Last Reading:" Grid.Row="2" Grid.Column="0" FontAttributes="Bold"/>
+                                <Label Text="{Binding LastReadingValue}" Grid.Row="2" Grid.Column="1" />
+                                <Label Text="{Binding LastReadingTimestamp, StringFormat='{0:yyyy-MM-dd HH:mm}'}" Grid.Row="2" Grid.Column="1" HorizontalOptions="End"/>
 
-                        <Label Text="Status:"
-                               Grid.Row="2"
-                               Grid.Column="0" />
-                        <Label Text="{Binding Status}"
-                               Grid.Row="2"
-                               Grid.Column="1" />
-                    </Grid>
+
+                                <!-- Maintenance Info -->
+                                <Label Text="Last Maint.:" Grid.Row="3" Grid.Column="0" FontAttributes="Bold"/>
+                                <Label Text="{Binding LastMaintenanceDate, StringFormat='{0:yyyy-MM-dd}', TargetNullValue='N/A'}" Grid.Row="3" Grid.Column="1" />
+
+                                <Label Text="Next Maint.:" Grid.Row="4" Grid.Column="0" FontAttributes="Bold"/>
+                                <Label Text="{Binding NextMaintenanceDate, StringFormat='{0:yyyy-MM-dd}', TargetNullValue='Not Scheduled'}" Grid.Row="4" Grid.Column="1" TextColor="{Binding NextMaintenanceDate, Converter={StaticResource DateToColorConverter}}" />
+                                <!-- Add converter later if needed -->
+
+                                <Label Text="Notes:" Grid.Row="5" Grid.Column="0" FontAttributes="Bold" IsVisible="{Binding MaintenanceNotes, Converter={StaticResource StringToBoolConverter}}"/>
+                                <!-- Show only if notes exist -->
+                                <Label Text="{Binding MaintenanceNotes}" Grid.Row="5" Grid.Column="1" IsVisible="{Binding MaintenanceNotes, Converter={StaticResource StringToBoolConverter}}"/>
+
+                                <!-- Maintenance Actions - Visible to Ops Manager/Admin -->
+                                <HorizontalStackLayout Grid.Row="6" Grid.ColumnSpan="2" Spacing="10" Margin="0,10,0,0"
+                                                       IsVisible="{Binding Source={RelativeSource AncestorType={x:Type local:SensorManagementPage}}, Path=IsAdminVisible}">
+                                    <Button Text="Schedule"
+                                            CommandParameter="{Binding .}"
+                                            Clicked="OnScheduleMaintenanceClicked"
+                                            WidthRequest="120"/>
+                                    <Button Text="Mark Complete"
+                                            CommandParameter="{Binding .}"
+                                            Clicked="OnMarkMaintenanceCompleteClicked"
+                                            IsEnabled="{Binding NextMaintenanceDate, Converter={StaticResource NullToBoolConverter False}}"
+                                            WidthRequest="150"/>
+                                </HorizontalStackLayout>
+                            </Grid>
+                        </VerticalStackLayout>
+                    </Border>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
     </Grid>
+
+    <!-- Optional: Add Converters in Page Resources for dynamic coloring/visibility -->
+    <ContentPage.Resources>
+        <!-- Example Converter (Implement C# logic in code-behind or separate file) -->
+        <!-- <local:StatusToColorConverter x:Key="StatusToColorConverter" /> -->
+        <!-- <local:DateToColorConverter x:Key="DateToColorConverter" /> -->
+        <!-- <local:StringToBoolConverter x:Key="StringToBoolConverter" /> -->
+        <!-- <local:NullToBoolConverter x:Key="NullToBoolConverter" /> -->
+    </ContentPage.Resources>
 
 </ContentPage>

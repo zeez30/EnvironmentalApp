@@ -1,8 +1,5 @@
+// File: EnvironmentalApp/Data/Sensor.cs
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace EnvironmentalApp.Data
 {
@@ -16,5 +13,11 @@ namespace EnvironmentalApp.Data
         public double Longitude { get; set; }
         public string LastReadingValue { get; set; }
         public DateTime LastReadingTimestamp { get; set; }
+
+        // --- New Properties for Maintenance ---
+        public DateTime? NextMaintenanceDate { get; set; }
+        public DateTime? LastMaintenanceDate { get; set; }
+        public string MaintenanceNotes { get; set; } // Optional notes for the next/last task
+        // --- End of New Properties ---
     }
 }
