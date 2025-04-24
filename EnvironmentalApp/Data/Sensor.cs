@@ -16,5 +16,7 @@ namespace EnvironmentalApp.Data
         public double Longitude { get; set; }
         public string LastReadingValue { get; set; }
         public DateTime LastReadingTimestamp { get; set; }
+        public bool IsAnomalous { get; set; }
+        public string AnomalyReason { get; set; }
     }
 }

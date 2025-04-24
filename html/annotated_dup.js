@@ -730,10 +730,14 @@ var annotated_dup =
         [ "FirebaseAuthService", "class_environmental_app_1_1_data_1_1_firebase_auth_service.html", "class_environmental_app_1_1_data_1_1_firebase_auth_service" ],
         [ "IFirebaseAuthService", "interface_environmental_app_1_1_data_1_1_i_firebase_auth_service.html", null ],
         [ "PinCreation", "class_environmental_app_1_1_data_1_1_pin_creation.html", null ],
+        [ "Sensor", "class_environmental_app_1_1_data_1_1_sensor.html", null ],
         [ "UserInfo", "class_environmental_app_1_1_data_1_1_user_info.html", null ]
       ] ],
       [ "EnvironmentalApp_XamlTypeInfo", "namespace_environmental_app_1_1_environmental_app___xaml_type_info.html", [
         [ "XamlMetaDataProvider", "class_environmental_app_1_1_environmental_app___xaml_type_info_1_1_xaml_meta_data_provider.html", "class_environmental_app_1_1_environmental_app___xaml_type_info_1_1_xaml_meta_data_provider" ]
+      ] ],
+      [ "Services", "namespace_environmental_app_1_1_services.html", [
+        [ "SensorService", "class_environmental_app_1_1_services_1_1_sensor_service.html", "class_environmental_app_1_1_services_1_1_sensor_service" ]
       ] ],
       [ "WinUI", "namespace_environmental_app_1_1_win_u_i.html", [
         [ "App", "class_environmental_app_1_1_win_u_i_1_1_app.html", "class_environmental_app_1_1_win_u_i_1_1_app" ]
@@ -750,7 +754,7 @@ var annotated_dup =
       [ "Program", "class_environmental_app_1_1_program.html", null ],
       [ "ReportsPage", "class_environmental_app_1_1_reports_page.html", null ],
       [ "Resource", "class_environmental_app_1_1_resource.html", null ],
-      [ "SensorManagementPage", "class_environmental_app_1_1_sensor_management_page.html", null ],
+      [ "SensorManagementPage", "class_environmental_app_1_1_sensor_management_page.html", "class_environmental_app_1_1_sensor_management_page" ],
       [ "UserManagementPage", "class_environmental_app_1_1_user_management_page.html", "class_environmental_app_1_1_user_management_page" ]
     ] ],
     [ "microsoft", null, [

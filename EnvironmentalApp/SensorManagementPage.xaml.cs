@@ -56,6 +56,7 @@ namespace EnvironmentalApp
             // Call the GetMockSensors method of the SensorService to retrieve
             // the list of mock sensor data.
             Sensors = _sensorService.GetMockSensors();
+            _sensorService.DetectAnomalies(Sensors);
             // The ObservableCollection will automatically notify the UI that
             // its content has changed, causing the CollectionView to update.
         }
