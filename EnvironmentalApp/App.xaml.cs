@@ -1,7 +1,9 @@
 ﻿using Microsoft.Maui.Controls;
 
+
 namespace EnvironmentalApp
 {
+
     public partial class App : Application
     {
         public App()

@@ -4,6 +4,7 @@ using CommunityToolkit.Maui;
 using CommunityToolkit.Maui.Maps;
 using System.Diagnostics;
 using EnvironmentalApp.Data;
+using System.Text;
 
 namespace EnvironmentalApp
 {
@@ -11,6 +12,7 @@ namespace EnvironmentalApp
     {
         public static MauiApp CreateMauiApp()
         {
+            Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
             var builder = MauiApp.CreateBuilder();
             builder
                 .UseMauiApp<App>()
@@ -29,6 +31,7 @@ namespace EnvironmentalApp
 #endif
             builder.Services.AddSingleton<FirebaseAuthService>();
             builder.Services.AddTransient<MainPage>();
+
             return builder.Build();
         }
     }

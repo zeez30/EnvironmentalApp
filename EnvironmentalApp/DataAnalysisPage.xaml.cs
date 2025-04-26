@@ -1,3 +1,4 @@
+// File: DataAnalysisPage.xaml.cs
 using EnvironmentalApp.Data;
 using Microsoft.Maui.Controls;
 using System;
@@ -6,14 +7,14 @@ using System.Globalization;
 using System.IO;
 using System.Reflection;
 using System.Threading.Tasks;
-using OfficeOpenXml; // Namespace for EPPlus
-using System.Linq; // Required for Linq queries like .ToList()
+using ExcelDataReader; // <-- Add this
+using System.Data;     // <-- Add this
+using System.Linq;
 
 namespace EnvironmentalApp
 {
     public partial class DataAnalysisPage : ContentPage
     {
-        // Collections to hold the loaded data for each type
         public ObservableCollection<AirQualityReading> AirQualityData { get; set; }
         public ObservableCollection<WaterQualityReading> WaterQualityData { get; set; }
         public ObservableCollection<WeatherReading> WeatherData { get; set; }
@@ -22,23 +23,16 @@ namespace EnvironmentalApp
         {
             InitializeComponent();
 
-            // Initialize collections
             AirQualityData = new ObservableCollection<AirQualityReading>();
             WaterQualityData = new ObservableCollection<WaterQualityReading>();
             WeatherData = new ObservableCollection<WeatherReading>();
 
-            // Set default selected data type (optional)
-            DataTypePicker.SelectedIndex = 0; // Default to Air Quality
+            DataTypePicker.SelectedIndex = 0;
 
-            // Set Binding Context for the CollectionViews (can also be done in XAML)
             AirQualityCollectionView.ItemsSource = AirQualityData;
             WaterQualityCollectionView.ItemsSource = WaterQualityData;
             WeatherCollectionView.ItemsSource = WeatherData;
 
-            // Set EPPlus License context - VERY IMPORTANT for EPPlus v5+
-            ExcelPackage.LicenseContext = LicenseContext.NonCommercial; // Or LicenseContext.Commercial if applicable
-
-            // Set initial visibility based on default picker selection
             UpdateVisibleGrid();
         }
 
@@ -54,14 +48,13 @@ namespace EnvironmentalApp
             DateTime startDate = StartDatePicker.Date;
             DateTime endDate = EndDatePicker.Date.AddDays(1).AddTicks(-1); // Include the whole end day
 
-            // Clear previous data and status
             AirQualityData.Clear();
             WaterQualityData.Clear();
             WeatherData.Clear();
             StatusLabel.Text = "";
             LoadingIndicator.IsVisible = true;
             LoadingIndicator.IsRunning = true;
-            UpdateVisibleGrid(); // Hide all grids initially
+            UpdateVisibleGrid();
 
             try
             {
@@ -81,13 +74,13 @@ namespace EnvironmentalApp
                         StatusLabel.Text = WeatherData.Any() ? $"{WeatherData.Count} Weather records loaded." : "No Weather data found for the selected period.";
                         break;
                 }
-                UpdateVisibleGrid(); // Show the correct grid
+                UpdateVisibleGrid();
             }
             catch (Exception ex)
             {
                 StatusLabel.Text = "Error loading data.";
                 await DisplayAlert("Error", $"Failed to load data: {ex.Message}", "OK");
-                System.Diagnostics.Debug.WriteLine($"Data Loading Error: {ex}"); // Log detailed error
+                System.Diagnostics.Debug.WriteLine($"Data Loading Error: {ex}");
             }
             finally
             {
@@ -98,17 +91,11 @@ namespace EnvironmentalApp
 
         private void DataTypePicker_SelectedIndexChanged(object sender, EventArgs e)
         {
-            // Optionally clear data or just update visibility when type changes
-            // AirQualityData.Clear();
-            // WaterQualityData.Clear();
-            // WeatherData.Clear();
-            // StatusLabel.Text = "Select data type and date range, then load data.";
             UpdateVisibleGrid();
         }
 
         private void UpdateVisibleGrid()
         {
-            // Hide all grids first
             AirQualityGrid.IsVisible = false;
             WaterQualityGrid.IsVisible = false;
             WeatherGrid.IsVisible = false;
@@ -116,127 +103,183 @@ namespace EnvironmentalApp
             if (DataTypePicker.SelectedIndex != -1)
             {
                 string selectedType = DataTypePicker.SelectedItem.ToString();
-
-                // Show the relevant grid based on selection (only if data exists for it)
                 if (selectedType == "Air Quality" && AirQualityData.Any()) AirQualityGrid.IsVisible = true;
                 else if (selectedType == "Water Quality" && WaterQualityData.Any()) WaterQualityGrid.IsVisible = true;
                 else if (selectedType == "Weather" && WeatherData.Any()) WeatherGrid.IsVisible = true;
-                // If no data loaded yet for the selected type, no grid will show, StatusLabel provides feedback
             }
         }
+
+        // --- Load methods using ExcelDataReader ---
 
         private async Task LoadAirQualityDataAsync(DateTime startDate, DateTime endDate)
         {
-            // Resource name format: DefaultNamespace.FolderPath.FileName
             var assembly = Assembly.GetExecutingAssembly();
-            var resourceName = "EnvironmentalApp.Resources.Raw.Air_quality.xlsx"; // Adjust namespace/path if needed
-
-            using (var stream = assembly.GetManifestResourceStream(resourceName))
-            {
-                if (stream == null)
-                {
-                    throw new FileNotFoundException($"Embedded resource '{resourceName}' not found.");
-                }
-
-                using (var package = new ExcelPackage(stream))
-                {
-                    // Assuming data is on the first sheet (or adjust by name)
-                    var worksheet = package.Workbook.Worksheets.FirstOrDefault(); // Or use package.Workbook.Worksheets["SheetName"];
-                    if (worksheet == null)
-                    {
-                        throw new Exception("No worksheet found in the Air Quality Excel file.");
-                    }
-
-                    // Find the actual start row for data (skip headers) - adjust based on your file
-                    int startRow = 11; // Based on screenshot, data starts at row 11
-                    int dateCol = 1;
-                    int timeCol = 2;
-                    int no2Col = 3;
-                    int so2Col = 4;
-                    int pm25Col = 5;
-                    int pm10Col = 6;
-
-                    // --- Get Site Name (Optional but useful context) ---
-                    string siteName = worksheet.Cells["C3"].GetValue<string>() ?? "Unknown Site"; // Adjust cell ref if needed
-
-                    for (int row = startRow; row <= worksheet.Dimension.End.Row; row++)
-                    {
-                        try
-                        {
-                            // Read Date and Time - Excel stores them as doubles (OLE Automation date)
-                            var dateVal = worksheet.Cells[row, dateCol].Value;
-                            var timeVal = worksheet.Cells[row, timeCol].Value;
-
-                            if (dateVal == null || timeVal == null) continue; // Skip row if no date/time
-
-                            // Combine Date and Time from Excel's OLE Automation format
-                            DateTime datePart = DateTime.FromOADate(Convert.ToDouble(dateVal));
-                            DateTime timePart = DateTime.FromOADate(Convert.ToDouble(timeVal));
-                            DateTime timestamp = datePart.Date + timePart.TimeOfDay;
-
-                            // Apply Date Filter
-                            if (timestamp < startDate || timestamp > endDate)
-                            {
-                                continue;
-                            }
-
-                            var reading = new AirQualityReading
-                            {
-                                Timestamp = timestamp,
-                                SiteName = siteName,
-                                NitrogenDioxide = GetNullableDouble(worksheet.Cells[row, no2Col].Value),
-                                SulphurDioxide = GetNullableDouble(worksheet.Cells[row, so2Col].Value),
-                                PM25 = GetNullableDouble(worksheet.Cells[row, pm25Col].Value),
-                                PM10 = GetNullableDouble(worksheet.Cells[row, pm10Col].Value)
-                            };
-                            AirQualityData.Add(reading);
-                        }
-                        catch (Exception ex)
-                        {
-                            System.Diagnostics.Debug.WriteLine($"Error parsing Air Quality row {row}: {ex.Message}");
-                            // Optionally log or display an error for specific row failures
-                        }
-                    }
-                }
-            }
-            await Task.CompletedTask; // Indicate async completion if no async file I/O was awaited
-        }
-
-        private async Task LoadWaterQualityDataAsync(DateTime startDate, DateTime endDate)
-        {
-            var assembly = Assembly.GetExecutingAssembly();
-            var resourceName = "EnvironmentalApp.Resources.Raw.Water_quality.xlsx"; // Adjust namespace/path
+            var resourceName = "EnvironmentalApp.Resources.Raw.Air_quality.xlsx";
 
             using (var stream = assembly.GetManifestResourceStream(resourceName))
             {
                 if (stream == null) throw new FileNotFoundException($"Embedded resource '{resourceName}' not found.");
 
-                using (var package = new ExcelPackage(stream))
+                using (var reader = ExcelReaderFactory.CreateReader(stream))
                 {
-                    var worksheet = package.Workbook.Worksheets.FirstOrDefault();
-                    if (worksheet == null) throw new Exception("No worksheet found in Water Quality file.");
+                    // Use AsDataSet, telling it the first row it reads should be the header
+                    var result = reader.AsDataSet(new ExcelDataSetConfiguration()
+                    {
+                        ConfigureDataTable = (_) => new ExcelDataTableConfiguration()
+                        {
+                            UseHeaderRow = true // Let it use the first row it reads as header
+                                                // ** REMOVED HeaderRowIndex **
+                        }
+                    });
 
-                    int startRow = 6; // Data starts row 6
-                    int dateCol = 1;
-                    int timeCol = 2;
-                    int nitrateCol = 3;
-                    int nitriteCol = 4;
-                    int phosphateCol = 5;
-                    int ecCol = 6;
+                    var dataTable = result.Tables[0];
+                    string siteName = "Edinburgh Nicolson Street"; // Assume known
 
-                    string siteName = worksheet.Cells["B1"].GetValue<string>() ?? "Unknown Site"; // Adjust if needed
+                    // ** ADJUSTMENT: Skip initial rows MANUALLY if AsDataSet doesn't handle the offset **
+                    // Header is row 10. AsDataSet likely used row 1 as header.
+                    // Data starts row 11. The DataTable rows collection will contain data from row 2 onwards.
+                    // We need to effectively skip rows 2-10 from the original sheet's perspective,
+                    // which corresponds to rows 0-8 in the dataTable.Rows collection IF the header was row 1.
+                    // --> Since we *know* the real header is row 10, and data starts row 11,
+                    // we need to find the index where the actual data begins.
+                    // Let's find the header row manually first to get column indices reliably.
 
-                    for (int row = startRow; row <= worksheet.Dimension.End.Row; row++)
+                    // Find the actual header row (row 10 in the sheet)
+                    int headerRowInSheet = 10; // 1-based index in Excel sheet
+                    DataRow actualHeaderRow = null;
+                    for (int i = 0; i < dataTable.Rows.Count; i++)
+                    {
+                        // Check if the content matches expected header values (crude but effective for known structure)
+                        // Compare based on 1-based index from sheet. dataTable.Rows index is 0-based and starts after header row used by AsDataSet.
+                        // This logic is getting complex. Let's revert to manual reading for Air/Water.
+
+                        // *** REVERTING TO MANUAL READ FOR AIR/WATER ***
+                        // AsDataSet struggles when headers aren't near the top.
+
+                        AirQualityData.Clear(); // Clear again before manual add
+                        reader.Reset(); // Reset reader position to the start
+
+                        // Manually skip rows before the header
+                        for (int skipIndex = 1; i < headerRowInSheet; i++)
+                        {
+                            if (!reader.Read()) throw new Exception("Reached end of file before finding header row.");
+                        }
+
+                        // Read the header row itself (row 10)
+                        if (!reader.Read()) throw new Exception("Could not read header row.");
+                        // We can optionally store header names here if needed, but indices are fine too.
+
+                        // Column indices (0-based for reader)
+                        int dateCol = 0; // Column A
+                        int timeCol = 1; // Column B
+                        int no2Col = 2;
+                        int so2Col = 3;
+                        int pm25Col = 4;
+                        int pm10Col = 5;
+
+                        // Now read the data rows (row 11 onwards)
+                        while (reader.Read())
+                        {
+                            try
+                            {
+                                var dateVal = reader.GetValue(dateCol);
+                                var timeVal = reader.GetValue(timeCol);
+
+                                if (dateVal == null || timeVal == null) continue;
+
+                                DateTime datePart;
+                                DateTime timePart;
+
+                                // Handle potential OLE Automation dates if standard parsing fails
+                                if (dateVal is DateTime dVal) datePart = dVal;
+                                else if (double.TryParse(dateVal.ToString(), out double dateOAD)) datePart = DateTime.FromOADate(dateOAD);
+                                else continue; // Skip row if date cannot be parsed
+
+                                if (timeVal is DateTime tVal) timePart = tVal; // Might contain full date, take only time
+                                else if (double.TryParse(timeVal.ToString(), out double timeOAD)) timePart = DateTime.FromOADate(timeOAD);
+                                else continue; // Skip row if time cannot be parsed
+
+                                DateTime timestamp = datePart.Date + timePart.TimeOfDay;
+
+                                // Apply Date Filter
+                                if (timestamp < startDate || timestamp > endDate) continue;
+
+                                var reading = new AirQualityReading
+                                {
+                                    Timestamp = timestamp,
+                                    SiteName = siteName,
+                                    NitrogenDioxide = GetNullableDouble(reader.GetValue(no2Col)),
+                                    SulphurDioxide = GetNullableDouble(reader.GetValue(so2Col)),
+                                    PM25 = GetNullableDouble(reader.GetValue(pm25Col)),
+                                    PM10 = GetNullableDouble(reader.GetValue(pm10Col))
+                                };
+                                AirQualityData.Add(reading);
+                            }
+                            catch (Exception ex)
+                            {
+                                System.Diagnostics.Debug.WriteLine($"Error processing Air Quality row: {ex.Message}");
+                            }
+                        }
+                        break; // Exit outer loop once manual reading is done
+                    }
+                }
+            }
+            await Task.CompletedTask;
+        }
+
+        private async Task LoadWaterQualityDataAsync(DateTime startDate, DateTime endDate)
+        {
+            var assembly = Assembly.GetExecutingAssembly();
+            var resourceName = "EnvironmentalApp.Resources.Raw.Water_quality.xlsx";
+
+            using (var stream = assembly.GetManifestResourceStream(resourceName))
+            {
+                if (stream == null) throw new FileNotFoundException($"Embedded resource '{resourceName}' not found.");
+
+                using (var reader = ExcelReaderFactory.CreateReader(stream))
+                {
+                    WaterQualityData.Clear(); // Clear before manual add
+                    string siteName = "Glencorse B"; // Assume known
+
+                    int headerRowInSheet = 5; // Header is row 5
+
+                    // Manually skip rows before the header
+                    for (int i = 1; i < headerRowInSheet; i++)
+                    {
+                        if (!reader.Read()) throw new Exception("Reached end of file before finding header row.");
+                    }
+                    // Read the header row itself (row 5)
+                    if (!reader.Read()) throw new Exception("Could not read header row.");
+
+                    // Column indices (0-based for reader)
+                    int dateCol = 0;
+                    int timeCol = 1;
+                    int nitrateCol = 2;
+                    int nitriteCol = 3;
+                    int phosphateCol = 4;
+                    int ecCol = 5;
+
+                    // Now read the data rows (row 6 onwards)
+                    while (reader.Read())
                     {
                         try
                         {
-                            var dateVal = worksheet.Cells[row, dateCol].Value;
-                            var timeVal = worksheet.Cells[row, timeCol].Value;
+                            var dateVal = reader.GetValue(dateCol);
+                            var timeVal = reader.GetValue(timeCol);
 
                             if (dateVal == null || timeVal == null) continue;
 
-                            DateTime datePart = DateTime.FromOADate(Convert.ToDouble(dateVal));
-                            DateTime timePart = DateTime.FromOADate(Convert.ToDouble(timeVal));
+                            DateTime datePart;
+                            DateTime timePart;
+
+                            if (dateVal is DateTime dVal) datePart = dVal;
+                            else if (double.TryParse(dateVal.ToString(), out double dateOAD)) datePart = DateTime.FromOADate(dateOAD);
+                            else continue;
+
+                            if (timeVal is DateTime tVal) timePart = tVal;
+                            else if (double.TryParse(timeVal.ToString(), out double timeOAD)) timePart = DateTime.FromOADate(timeOAD);
+                            else continue;
+
                             DateTime timestamp = datePart.Date + timePart.TimeOfDay;
 
                             // Apply Date Filter
@@ -246,16 +289,16 @@ namespace EnvironmentalApp
                             {
                                 Timestamp = timestamp,
                                 SiteName = siteName,
-                                Nitrate = GetNullableDouble(worksheet.Cells[row, nitrateCol].Value),
-                                Nitrite = GetNullableDouble(worksheet.Cells[row, nitriteCol].Value),
-                                Phosphate = GetNullableDouble(worksheet.Cells[row, phosphateCol].Value),
-                                EC = GetNullableDouble(worksheet.Cells[row, ecCol].Value) // EC might often be null here
+                                Nitrate = GetNullableDouble(reader.GetValue(nitrateCol)),
+                                Nitrite = GetNullableDouble(reader.GetValue(nitriteCol)),
+                                Phosphate = GetNullableDouble(reader.GetValue(phosphateCol)),
+                                EC = GetNullableDouble(reader.GetValue(ecCol))
                             };
                             WaterQualityData.Add(reading);
                         }
                         catch (Exception ex)
                         {
-                            System.Diagnostics.Debug.WriteLine($"Error parsing Water Quality row {row}: {ex.Message}");
+                            System.Diagnostics.Debug.WriteLine($"Error processing Water Quality row: {ex.Message}");
                         }
                     }
                 }
@@ -263,7 +306,7 @@ namespace EnvironmentalApp
             await Task.CompletedTask;
         }
 
-
+        // LoadWeatherDataAsync can remain as it was (reading metadata then looping)
         private async Task LoadWeatherDataAsync(DateTime startDate, DateTime endDate)
         {
             var assembly = Assembly.GetExecutingAssembly();
@@ -273,56 +316,71 @@ namespace EnvironmentalApp
             {
                 if (stream == null) throw new FileNotFoundException($"Embedded resource '{resourceName}' not found.");
 
-                using (var package = new ExcelPackage(stream))
+                using (var reader = ExcelReaderFactory.CreateReader(stream))
                 {
-                    var worksheet = package.Workbook.Worksheets.FirstOrDefault();
-                    if (worksheet == null) throw new Exception("No worksheet found in Weather file.");
+                    WeatherData.Clear(); // Clear before adding
 
-                    // --- Get Location (Optional context) ---
-                    double lat = GetNullableDouble(worksheet.Cells["A2"].Value) ?? 0;
-                    double lon = GetNullableDouble(worksheet.Cells["B2"].Value) ?? 0;
+                    // Weather file has metadata, then headers, then data.
+                    // Read metadata first manually
+                    reader.Read(); // Skip header 1: latitude etc labels
+                    reader.Read(); // Read data row 2: lat/lon values
+                    double lat = GetNullableDouble(reader.GetValue(0)) ?? 0; // Column A
+                    double lon = GetNullableDouble(reader.GetValue(1)) ?? 0; // Column B
+                    reader.Read(); // Skip empty row 3
+                    reader.Read(); // Skip header row 4: time, temp labels etc.
 
-                    int startRow = 5; // Data starts row 5
-                    int timestampCol = 1; // Combined ISO 8601 Timestamp
-                    int tempCol = 2;
-                    int humidityCol = 3;
-                    int windSpeedCol = 4;
-                    int windDirCol = 5;
+                    // Column indices (0-based for reader)
+                    int timestampCol = 0;
+                    int tempCol = 1;
+                    int humidityCol = 2;
+                    int windSpeedCol = 3;
+                    int windDirCol = 4;
 
-
-                    for (int row = startRow; row <= worksheet.Dimension.End.Row; row++)
+                    // Now read the actual data rows (row 5 onwards)
+                    while (reader.Read())
                     {
                         try
                         {
-                            var timestampStr = worksheet.Cells[row, timestampCol].GetValue<string>();
-                            if (string.IsNullOrWhiteSpace(timestampStr)) continue;
+                            var timestampObj = reader.GetValue(timestampCol); // Column A: Timestamp string
+                            if (timestampObj == null) continue;
 
-                            // Parse ISO 8601 timestamp
-                            if (DateTime.TryParse(timestampStr, CultureInfo.InvariantCulture, DateTimeStyles.AssumeUniversal | DateTimeStyles.AdjustToUniversal, out DateTime timestamp))
+                            DateTime timestamp;
+                            if (timestampObj is DateTime dt)
                             {
-                                // Apply Date Filter
-                                if (timestamp < startDate || timestamp > endDate) continue;
-
-                                var reading = new WeatherReading
-                                {
-                                    Timestamp = timestamp,
-                                    Latitude = lat,
-                                    Longitude = lon,
-                                    Temperature = GetNullableDouble(worksheet.Cells[row, tempCol].Value),
-                                    Humidity = GetNullableDouble(worksheet.Cells[row, humidityCol].Value),
-                                    WindSpeed = GetNullableDouble(worksheet.Cells[row, windSpeedCol].Value),
-                                    WindDirection = GetNullableDouble(worksheet.Cells[row, windDirCol].Value)
-                                };
-                                WeatherData.Add(reading);
+                                timestamp = dt;
+                            }
+                            else if (double.TryParse(timestampObj.ToString(), out double oaDate)) // Check if OLE Automation date first
+                            {
+                                timestamp = DateTime.FromOADate(oaDate);
+                            }
+                            else if (DateTime.TryParse(timestampObj.ToString(), CultureInfo.InvariantCulture, DateTimeStyles.AssumeUniversal | DateTimeStyles.AdjustToUniversal, out DateTime parsedDt)) // Fallback to ISO string parsing
+                            {
+                                timestamp = parsedDt;
                             }
                             else
                             {
-                                System.Diagnostics.Debug.WriteLine($"Could not parse timestamp '{timestampStr}' in Weather file, row {row}");
+                                System.Diagnostics.Debug.WriteLine($"Skipping Weather row due to unparseable timestamp: {timestampObj}");
+                                continue;
                             }
+
+                            // Apply Date Filter
+                            if (timestamp < startDate || timestamp > endDate) continue;
+
+                            var reading = new WeatherReading
+                            {
+                                Timestamp = timestamp,
+                                Latitude = lat,
+                                Longitude = lon,
+                                Temperature = GetNullableDouble(reader.GetValue(tempCol)),
+                                Humidity = GetNullableDouble(reader.GetValue(humidityCol)),
+                                WindSpeed = GetNullableDouble(reader.GetValue(windSpeedCol)),
+                                WindDirection = GetNullableDouble(reader.GetValue(windDirCol))
+                            };
+                            WeatherData.Add(reading);
                         }
                         catch (Exception ex)
                         {
-                            System.Diagnostics.Debug.WriteLine($"Error parsing Weather row {row}: {ex.Message}");
+                            System.Diagnostics.Debug.WriteLine($"Error processing Weather row: {ex.Message}");
                         }
                     }
                 }
@@ -331,23 +389,22 @@ namespace EnvironmentalApp
         }
 
 
-        // Helper function to safely convert cell values to nullable double
+        // Helper function remains the same
+        // Helper function remains the same
         private double? GetNullableDouble(object cellValue)
         {
             if (cellValue == null || cellValue == DBNull.Value) return null;
-
+            if (cellValue is double dbl) return dbl;
             if (double.TryParse(cellValue.ToString(), NumberStyles.Any, CultureInfo.InvariantCulture, out double result))
             {
                 return result;
             }
-            // Handle specific string cases like "No data" if necessary
             if (cellValue is string strVal && strVal.Trim().Equals("No data", StringComparison.OrdinalIgnoreCase))
             {
                 return null;
             }
-
             System.Diagnostics.Debug.WriteLine($"Warning: Could not parse '{cellValue}' as double.");
-            return null; // Return null if parsing fails
+            return null;
         }
     }
 }
