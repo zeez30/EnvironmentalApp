@@ -49,7 +49,7 @@ namespace EnvironmentalApp.Data
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             // Specify the path to the SQLite database file
-            optionsBuilder.UseSqlite("Data Source=nvironmentaldata.db");  // Change the filename if needed
+            optionsBuilder.UseSqlite("Data Source=environmentaldata.db");  
         }
     }
 }
