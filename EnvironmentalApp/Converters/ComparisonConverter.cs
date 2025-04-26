@@ -6,7 +6,6 @@ namespace EnvironmentalApp.Converters
     {
         Equals,
         NotEquals,
-        // Add LessThan, GreaterThan etc. if needed
     }
 
     public class ComparisonConverter : IValueConverter

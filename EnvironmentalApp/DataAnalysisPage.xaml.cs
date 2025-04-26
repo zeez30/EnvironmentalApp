@@ -1,4 +1,3 @@
-// File: DataAnalysisPage.xaml.cs
 using EnvironmentalApp.Data;
 using Microsoft.Maui.Controls;
 using System;
@@ -7,8 +6,8 @@ using System.Globalization;
 using System.IO;
 using System.Reflection;
 using System.Threading.Tasks;
-using ExcelDataReader; // <-- Add this
-using System.Data;     // <-- Add this
+using ExcelDataReader; 
+using System.Data;     
 using System.Linq;
 
 namespace EnvironmentalApp
@@ -109,8 +108,6 @@ namespace EnvironmentalApp
             }
         }
 
-        // --- Load methods using ExcelDataReader ---
-
         private async Task LoadAirQualityDataAsync(DateTime startDate, DateTime endDate)
         {
             var assembly = Assembly.GetExecutingAssembly();
@@ -127,34 +124,18 @@ namespace EnvironmentalApp
                     {
                         ConfigureDataTable = (_) => new ExcelDataTableConfiguration()
                         {
-                            UseHeaderRow = true // Let it use the first row it reads as header
-                                                // ** REMOVED HeaderRowIndex **
+                            UseHeaderRow = true
                         }
                     });
 
                     var dataTable = result.Tables[0];
-                    string siteName = "Edinburgh Nicolson Street"; // Assume known
-
-                    // ** ADJUSTMENT: Skip initial rows MANUALLY if AsDataSet doesn't handle the offset **
-                    // Header is row 10. AsDataSet likely used row 1 as header.
-                    // Data starts row 11. The DataTable rows collection will contain data from row 2 onwards.
-                    // We need to effectively skip rows 2-10 from the original sheet's perspective,
-                    // which corresponds to rows 0-8 in the dataTable.Rows collection IF the header was row 1.
-                    // --> Since we *know* the real header is row 10, and data starts row 11,
-                    // we need to find the index where the actual data begins.
-                    // Let's find the header row manually first to get column indices reliably.
+                    string siteName = "Edinburgh Nicolson Street";
 
                     // Find the actual header row (row 10 in the sheet)
                     int headerRowInSheet = 10; // 1-based index in Excel sheet
                     DataRow actualHeaderRow = null;
                     for (int i = 0; i < dataTable.Rows.Count; i++)
                     {
-                        // Check if the content matches expected header values (crude but effective for known structure)
-                        // Compare based on 1-based index from sheet. dataTable.Rows index is 0-based and starts after header row used by AsDataSet.
-                        // This logic is getting complex. Let's revert to manual reading for Air/Water.
-
-                        // *** REVERTING TO MANUAL READ FOR AIR/WATER ***
-                        // AsDataSet struggles when headers aren't near the top.
 
                         AirQualityData.Clear(); // Clear again before manual add
                         reader.Reset(); // Reset reader position to the start
@@ -167,9 +148,7 @@ namespace EnvironmentalApp
 
                         // Read the header row itself (row 10)
                         if (!reader.Read()) throw new Exception("Could not read header row.");
-                        // We can optionally store header names here if needed, but indices are fine too.
 
-                        // Column indices (0-based for reader)
                         int dateCol = 0; // Column A
                         int timeCol = 1; // Column B
                         int no2Col = 2;
@@ -177,7 +156,6 @@ namespace EnvironmentalApp
                         int pm25Col = 4;
                         int pm10Col = 5;
 
-                        // Now read the data rows (row 11 onwards)
                         while (reader.Read())
                         {
                             try
@@ -251,7 +229,6 @@ namespace EnvironmentalApp
                     // Read the header row itself (row 5)
                     if (!reader.Read()) throw new Exception("Could not read header row.");
 
-                    // Column indices (0-based for reader)
                     int dateCol = 0;
                     int timeCol = 1;
                     int nitrateCol = 2;
@@ -320,8 +297,6 @@ namespace EnvironmentalApp
                 {
                     WeatherData.Clear(); // Clear before adding
 
-                    // Weather file has metadata, then headers, then data.
-                    // Read metadata first manually
                     reader.Read(); // Skip header 1: latitude etc labels
                     reader.Read(); // Read data row 2: lat/lon values
                     double lat = GetNullableDouble(reader.GetValue(0)) ?? 0; // Column A
@@ -336,7 +311,7 @@ namespace EnvironmentalApp
                     int windSpeedCol = 3;
                     int windDirCol = 4;
 
-                    // Now read the actual data rows (row 5 onwards)
+                    // Read the actual data rows (row 5 onwards)
                     while (reader.Read())
                     {
                         try
@@ -389,7 +364,6 @@ namespace EnvironmentalApp
         }
 
 
-        // Helper function remains the same
         // Helper function remains the same
         private double? GetNullableDouble(object cellValue)
         {

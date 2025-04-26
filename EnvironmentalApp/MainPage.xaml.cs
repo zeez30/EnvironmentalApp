@@ -8,8 +8,6 @@ namespace EnvironmentalApp
 
     public partial class MainPage : ContentPage
     {
-        // ObservableCollections to hold data that will be displayed in the UI.
-        // These are used for data binding, so changes to these collections will automatically update the UI.
         public ObservableCollection<Alert> RecentAlerts { get; set; }
         public ObservableCollection<SensorStatus> SensorStatuses { get; set; }
 
@@ -69,8 +67,6 @@ namespace EnvironmentalApp
                 new SensorStatus { SensorID = "Sensor 456", Status = "Online", AirQuality = "Normal", WaterQuality = "Critical" },
                 new SensorStatus { SensorID = "Sensor 789", Status = "Offline", AirQuality = "N/A", WaterQuality = "N/A" }
             };
-
-            // Sample data here is for demonstration purposes.
         }
 
         // Event handler for the "View Map" button click.
@@ -80,10 +76,8 @@ namespace EnvironmentalApp
         }
 
         // Event handler for the "Sensor Management" button click.
-        // In MainPage.xaml.cs
         private async void OnSensorManagementClicked(object sender, EventArgs e)
         {
-            // Make sure _authService is passed here
             await Navigation.PushAsync(new SensorManagementPage(_authService));
         }
 

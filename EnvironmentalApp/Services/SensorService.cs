@@ -1,8 +1,7 @@
-﻿// File: EnvironmentalApp/Services/SensorService.cs
-using System;
+﻿using System;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Threading.Tasks; // Add for Task.Delay
+using System.Threading.Tasks;
 using EnvironmentalApp.Data;
 
 namespace EnvironmentalApp.Services
@@ -65,7 +64,6 @@ namespace EnvironmentalApp.Services
 
         public bool ScheduleMaintenance(int sensorId, DateTime nextDate, string notes)
         {
-            // ... (previous implementation) ...
             var sensor = _mockSensors.FirstOrDefault(s => s.Id == sensorId);
             if (sensor != null)
             {
@@ -78,7 +76,6 @@ namespace EnvironmentalApp.Services
 
         public bool MarkMaintenanceComplete(int sensorId, DateTime completionDate)
         {
-            // ... (previous implementation) ...
             var sensor = _mockSensors.FirstOrDefault(s => s.Id == sensorId);
             if (sensor != null)
             {
@@ -90,7 +87,6 @@ namespace EnvironmentalApp.Services
             return false;
         }
 
-        // --- New Methods for Config/Firmware ---
 
         public bool UpdateSensorConfiguration(int sensorId, int newInterval, double? newThreshold, bool newIsEnabled)
         {
@@ -126,8 +122,7 @@ namespace EnvironmentalApp.Services
                 // Simulate outcome (e.g., success)
                 sensor.CurrentFirmwareVersion = sensor.LatestFirmwareVersion;
                 sensor.FirmwareUpdateStatus = "Up to date";
-                // sensor.FirmwareUpdateStatus = "Update Failed"; // Or simulate failure
-                return true; // Update initiated (and completed in this simulation)
+                return true; // Update initiated
             }
             if (sensor != null)
             {

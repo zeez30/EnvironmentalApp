@@ -1,4 +1,3 @@
-// File: EnvironmentalApp/SensorManagementPage.xaml.cs
 using System.Collections.ObjectModel;
 using EnvironmentalApp.Data;
 using EnvironmentalApp.Services;
@@ -6,7 +5,7 @@ using Microsoft.Maui.Controls;
 using System;
 using System.Linq;
 using System.ComponentModel;
-using System.Threading.Tasks; // Add for Task
+using System.Threading.Tasks;
 
 namespace EnvironmentalApp
 {
@@ -27,10 +26,9 @@ namespace EnvironmentalApp
         }
 
         private readonly SensorService _sensorService;
-        private readonly FirebaseAuthService _authService; // Assuming it's injected or available
+        private readonly FirebaseAuthService _authService; 
 
-        // Constructor needs FirebaseAuthService for role check
-        public SensorManagementPage(FirebaseAuthService authService) // Corrected constructor dependency
+        public SensorManagementPage(FirebaseAuthService authService) 
         {
             InitializeComponent();
             _sensorService = new SensorService();
@@ -43,20 +41,6 @@ namespace EnvironmentalApp
             BindingContext = this;
         }
 
-        // Alternative constructor if not using DI for SensorManagementPage itself
-        // but still passing authService from MainPage
-        /*
-        public SensorManagementPage(FirebaseAuthService authService)
-        {
-            InitializeComponent();
-            _sensorService = new SensorService();
-            _authService = authService; // Use the passed service
-            SetAdminVisibility();
-            LoadSensors();
-            BindingContext = this;
-        }
-        */
-
         private void SetAdminVisibility()
         {
             // Check role from the auth service
@@ -64,19 +48,14 @@ namespace EnvironmentalApp
             System.Diagnostics.Debug.WriteLine($"Admin Visibility Set To: {IsAdminVisible}"); // Debug output
         }
 
-        // --- Existing Methods (LoadSensors, Maintenance Handlers) ---
         private void LoadSensors()
         {
             Sensors = new ObservableCollection<Sensor>(_sensorService.GetMockSensors());
-            // Since Sensor implements INotifyPropertyChanged, we don't need to re-assign
-            // the whole collection for property updates to reflect in UI.
-            // But for Add/Remove or initial load, we still set the collection.
         }
 
-        // Event Handlers for Maintenance (keep previous implementation)
+        // Event Handlers for Maintenance 
         private async void OnScheduleMaintenanceClicked(object sender, EventArgs e)
         {
-            // ... same as before ...
             if (sender is Button button && button.CommandParameter is Sensor sensor)
             {
                 string dateStr = await DisplayPromptAsync($"Schedule Maintenance for {sensor.Name}",
@@ -98,7 +77,6 @@ namespace EnvironmentalApp
                     if (success)
                     {
                         await DisplayAlert("Success", "Maintenance scheduled.", "OK");
-                        // No need to call LoadSensors() if INotifyPropertyChanged works
                     }
                     else
                     {
@@ -114,7 +92,6 @@ namespace EnvironmentalApp
 
         private async void OnMarkMaintenanceCompleteClicked(object sender, EventArgs e)
         {
-            // ... same as before ...
             if (sender is Button button && button.CommandParameter is Sensor sensor)
             {
                 bool confirm = await DisplayAlert("Confirm Completion",
@@ -127,7 +104,6 @@ namespace EnvironmentalApp
                     if (success)
                     {
                         await DisplayAlert("Success", "Maintenance marked as complete.", "OK");
-                        // No need to call LoadSensors() if INotifyPropertyChanged works
                     }
                     else
                     {
@@ -137,14 +113,11 @@ namespace EnvironmentalApp
             }
         }
 
-        // --- New Handlers for Config/Firmware ---
 
         private async void OnConfigureClicked(object sender, EventArgs e)
         {
             if (sender is Button button && button.CommandParameter is Sensor sensor)
             {
-                // --- Get New Configuration via Prompts (Simple Simulation) ---
-                // Interval
                 string intervalStr = await DisplayPromptAsync($"Configure {sensor.Name}", "Sampling Interval (seconds):", "OK", "Cancel", sensor.SamplingIntervalSeconds.ToString(), keyboard: Keyboard.Numeric);
                 if (intervalStr == null || !int.TryParse(intervalStr, out int newInterval) || newInterval <= 0)
                 {
@@ -153,14 +126,13 @@ namespace EnvironmentalApp
                 }
 
                 // Threshold (nullable double)
-                string thresholdStr = await DisplayPromptAsync(
-                    $"Configure {sensor.Name}",                       // title
-                    "Reporting Threshold (optional, numeric):",       // message
-                    "OK",                                             // accept
-                    "Cancel",                                         // cancel
-                    placeholder: "e.g., 150.0 or empty",             // NAMED placeholder
-                    initialValue: sensor.ReportingThreshold?.ToString() ?? "" // NAMED initialValue
-                                                                              // You could add keyboard: Keyboard.Numeric here if desired, but it's optional
+                string thresholdStr = await DisplayPromptAsync($"Configure {sensor.Name}",                      
+                                                               "Reporting Threshold (optional, numeric):",       
+                                                               "OK",                                             
+                                                               "Cancel",                                         
+                                                               placeholder: "e.g., 150.0 or empty",             
+                                                               initialValue: sensor.ReportingThreshold?.ToString() ?? "" 
+                                                                              
                 ); double? newThreshold = null;
                 if (!string.IsNullOrWhiteSpace(thresholdStr))
                 {
@@ -185,7 +157,6 @@ namespace EnvironmentalApp
 
                 bool newIsEnabled = newIsEnabledNullable.Value;
 
-                // --- Call Service ---
                 bool success = _sensorService.UpdateSensorConfiguration(sensor.Id, newInterval, newThreshold, newIsEnabled);
 
                 if (success)
@@ -215,21 +186,15 @@ namespace EnvironmentalApp
 
                 if (confirm)
                 {
-                    // Visually indicate update is starting (optional if service does it quickly)
-                    // sensor.FirmwareUpdateStatus = "Initiating...";
-
                     // Call the async service method
                     bool initiated = await _sensorService.InitiateFirmwareUpdate(sensor.Id);
 
                     if (initiated)
                     {
-                        // The service now handles setting "Updating..." and eventually "Up to date" or "Failed"
-                        // The UI updates via INotifyPropertyChanged
                         await DisplayAlert("In Progress", "Firmware update initiated. Status will refresh.", "OK");
                     }
                     else
                     {
-                        // This happens if sensor wasn't found or update wasn't needed (redundant check)
                         await DisplayAlert("Error", "Could not start firmware update.", "OK");
                     }
                 }
@@ -237,13 +202,11 @@ namespace EnvironmentalApp
         }
 
 
-        // --- INotifyPropertyChanged Implementation ---
         public event PropertyChangedEventHandler PropertyChanged;
         protected virtual void OnPropertyChanged(string propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-        // Generic SetProperty helper for INotifyPropertyChanged
         protected bool SetProperty<T>(ref T storage, T value, string propertyName)
         {
             if (object.Equals(storage, value)) return false;
@@ -251,6 +214,5 @@ namespace EnvironmentalApp
             OnPropertyChanged(propertyName);
             return true;
         }
-        // --- End INotifyPropertyChanged ---
     }
 }

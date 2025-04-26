@@ -156,7 +156,6 @@
             </CollectionView>
         </Grid>
 
-        <!-- Message Area -->
         <Label Grid.Row="3" x:Name="StatusLabel" Text="Select data type and date range, then load data." HorizontalOptions="Center" VerticalOptions="Center"/>
 
     </Grid>

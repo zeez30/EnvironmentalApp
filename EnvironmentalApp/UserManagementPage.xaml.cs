@@ -9,10 +9,7 @@ public partial class UserManagementPage : ContentPage
     private readonly FirebaseAuthService _authService;
     public ObservableCollection<UserInfo> Users { get; set; }
 
-    /// <summary>
     /// Constructor for UserManagementPage.
-    /// </summary>
-    /// <param name="authService">Firebase Service</param>
     public UserManagementPage(FirebaseAuthService authService)
     {
         InitializeComponent();
@@ -25,11 +22,7 @@ public partial class UserManagementPage : ContentPage
         BindingContext = this;
     }
 
-    /// <summary>
     /// Changes the role of a selected user.
-    /// </summary>
-    /// <param name="sender">The sender object</param>
-    /// <param name="e">User click event args</param>
     private async void OnRoleChanged(object sender, EventArgs e)
     {
         if (userPicker.SelectedItem is UserInfo selectedUser && rolePicker.SelectedItem is string newRole)

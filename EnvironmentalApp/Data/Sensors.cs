@@ -1,4 +1,3 @@
-// File: EnvironmentalApp/Data/Sensor.cs
 using System;
 using System.ComponentModel; // Add for INotifyPropertyChanged
 
@@ -19,12 +18,10 @@ namespace EnvironmentalApp.Data
         private DateTime? _lastMaintenanceDate;
         private string _maintenanceNotes;
 
-        // --- New Configuration Properties ---
         private int _samplingIntervalSeconds = 3600; // Default to 1 hour
         private double? _reportingThreshold = null; // Example: Alert threshold
         private bool _isEnabled = true;
 
-        // --- New Firmware Properties ---
         private string _currentFirmwareVersion = "1.0.0";
         private string _latestFirmwareVersion = "1.1.0"; // Simulate a newer version available
         private string _firmwareUpdateStatus = "Idle"; // e.g., Idle, Updating, Success, Failed
@@ -113,7 +110,6 @@ namespace EnvironmentalApp.Data
         public string LatestFirmwareVersion
         {
             get => _latestFirmwareVersion;
-            // In reality, this might come from a central server, not be settable per sensor instance
             set => SetProperty(ref _latestFirmwareVersion, value);
         }
         public string FirmwareUpdateStatus
@@ -123,7 +119,6 @@ namespace EnvironmentalApp.Data
         }
 
 
-        // --- INotifyPropertyChanged Implementation ---
         public event PropertyChangedEventHandler PropertyChanged;
 
         protected virtual void OnPropertyChanged(string propertyName)
@@ -138,6 +133,5 @@ namespace EnvironmentalApp.Data
             OnPropertyChanged(propertyName);
             return true;
         }
-        // --- End INotifyPropertyChanged ---
     }
 }

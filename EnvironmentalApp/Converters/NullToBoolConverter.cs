@@ -4,7 +4,7 @@ namespace EnvironmentalApp.Converters
 {
     public class NullToBoolConverter : IValueConverter
     {
-        // Parameter allows inverting: True means null=true, False means null=false (default)
+        // Parameter allows inverting: True means null=true, False means null=false
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             bool parameterBool = false;

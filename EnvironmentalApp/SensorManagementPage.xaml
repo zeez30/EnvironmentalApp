@@ -14,7 +14,6 @@
         <!-- Reuse from previous step -->
         <converters:ComparisonConverter x:Key="FirmwareUpdateNeededConverter" Operation="NotEquals"/>
         <converters:FirmwareStatusToColorConverter x:Key="FirmwareStatusColorConv"/>
-        <!-- Add other converters from previous step if needed (DateToColor, StatusToColor, StringToBool) -->
     </ContentPage.Resources>
 
     <Grid RowDefinitions="Auto, *">
@@ -97,7 +96,6 @@
                                     </HorizontalStackLayout>
 
                                 </VerticalStackLayout>
-                                <!-- End Admin Only Section -->
                             </Grid>
                         </VerticalStackLayout>
                     </Border>
