@@ -23,8 +23,7 @@ namespace EnvironmentalApp.Data
         /// <summary>
         /// Gets or sets the time of the water quality reading. (Column B)
         /// </summary>
-        public TimeSpan Time { get; set; }        // Column B (adjust if Time is stored differently)
-
+        public TimeSpan Time { get; set; }        // Column B 
         /// <summary>
         /// Gets or sets the concentration of Nitrate in the water. (Column C)
         /// </summary>
