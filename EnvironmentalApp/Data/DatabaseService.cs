@@ -30,7 +30,7 @@ namespace EnvironmentalApp.Services
         /// <returns>A <see cref="Task"/> representing the asynchronous operation.</returns>
         public async Task InitializeDatabaseAsync()
         {
-            // Check if the database exists, if not, create it and apply migrations
+            
             await _dbContext.Database.MigrateAsync(); // This will create the database and apply pending migrations
         }
 
