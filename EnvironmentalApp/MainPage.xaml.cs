@@ -80,9 +80,11 @@ namespace EnvironmentalApp
         }
 
         // Event handler for the "Sensor Management" button click.
+        // In MainPage.xaml.cs
         private async void OnSensorManagementClicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new SensorManagementPage()); // Navigates to the SensorManagementPage.
+            // Make sure _authService is passed here
+            await Navigation.PushAsync(new SensorManagementPage(_authService));
         }
 
         // Event handler for the "Data Analysis" button click.

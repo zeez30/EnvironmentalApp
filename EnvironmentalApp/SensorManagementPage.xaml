@@ -3,60 +3,101 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:EnvironmentalApp"
              xmlns:data="clr-namespace:EnvironmentalApp.Data"
+             xmlns:converters="clr-namespace:EnvironmentalApp.Converters"
              x:Class="EnvironmentalApp.SensorManagementPage"
              Title="Sensor Management">
 
+    <ContentPage.Resources>
+        <!-- Define Converters -->
+        <converters:BoolToStringConverter x:Key="BoolToYesNoConverter" TrueString="Yes" FalseString="No" />
+        <converters:NullToBoolConverter x:Key="NullToBoolConverter" />
+        <!-- Reuse from previous step -->
+        <converters:ComparisonConverter x:Key="FirmwareUpdateNeededConverter" Operation="NotEquals"/>
+        <converters:FirmwareStatusToColorConverter x:Key="FirmwareStatusColorConv"/>
+        <!-- Add other converters from previous step if needed (DateToColor, StatusToColor, StringToBool) -->
+    </ContentPage.Resources>
+
     <Grid RowDefinitions="Auto, *">
-        <Label Text="Sensor List and Maintenance Schedule" FontSize="Large" Padding="10" Grid.Row="0"/>
+        <Label Text="Sensor List and Maintenance / Configuration" FontSize="Large" Padding="10" Grid.Row="0"/>
 
         <CollectionView x:Name="SensorsCollectionView"
                         ItemsSource="{Binding Sensors}"
                         Grid.Row="1">
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="data:Sensor">
-                    <!-- Use a Border or Frame for better visual separation -->
                     <Border StrokeShape="RoundRectangle 5" Stroke="LightGray" StrokeThickness="1" Padding="10" Margin="5">
                         <VerticalStackLayout Spacing="5">
                             <Label Text="{Binding Name}" FontAttributes="Bold" FontSize="Medium" />
-                            <Grid ColumnDefinitions="Auto, *" RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, Auto" ColumnSpacing="10">
-                                <!-- Basic Info -->
+                            <Grid ColumnDefinitions="Auto, *" RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, *" ColumnSpacing="10">
+
+                                <!-- Basic & Maintenance Info (Rows 0-5 as before) -->
                                 <Label Text="Type:" Grid.Row="0" Grid.Column="0" FontAttributes="Bold"/>
                                 <Label Text="{Binding Type}" Grid.Row="0" Grid.Column="1" />
-
                                 <Label Text="Status:" Grid.Row="1" Grid.Column="0" FontAttributes="Bold"/>
-                                <Label Text="{Binding Status}" Grid.Row="1" Grid.Column="1" TextColor="{Binding Status, Converter={StaticResource StatusToColorConverter}}" />
-                                <!-- Add converter later if needed -->
-
+                                <Label Text="{Binding Status}" Grid.Row="1" Grid.Column="1"/>
                                 <Label Text="Last Reading:" Grid.Row="2" Grid.Column="0" FontAttributes="Bold"/>
-                                <Label Text="{Binding LastReadingValue}" Grid.Row="2" Grid.Column="1" />
-                                <Label Text="{Binding LastReadingTimestamp, StringFormat='{0:yyyy-MM-dd HH:mm}'}" Grid.Row="2" Grid.Column="1" HorizontalOptions="End"/>
-
-
-                                <!-- Maintenance Info -->
+                                <Label Text="{Binding LastReadingTimestamp, StringFormat='{0:yyyy-MM-dd HH:mm}'}" Grid.Row="2" Grid.Column="1" />
                                 <Label Text="Last Maint.:" Grid.Row="3" Grid.Column="0" FontAttributes="Bold"/>
                                 <Label Text="{Binding LastMaintenanceDate, StringFormat='{0:yyyy-MM-dd}', TargetNullValue='N/A'}" Grid.Row="3" Grid.Column="1" />
-
                                 <Label Text="Next Maint.:" Grid.Row="4" Grid.Column="0" FontAttributes="Bold"/>
-                                <Label Text="{Binding NextMaintenanceDate, StringFormat='{0:yyyy-MM-dd}', TargetNullValue='Not Scheduled'}" Grid.Row="4" Grid.Column="1" TextColor="{Binding NextMaintenanceDate, Converter={StaticResource DateToColorConverter}}" />
-                                <!-- Add converter later if needed -->
-
-                                <Label Text="Notes:" Grid.Row="5" Grid.Column="0" FontAttributes="Bold" IsVisible="{Binding MaintenanceNotes, Converter={StaticResource StringToBoolConverter}}"/>
-                                <!-- Show only if notes exist -->
+                                <Label Text="{Binding NextMaintenanceDate, StringFormat='{0:yyyy-MM-dd}', TargetNullValue='Not Scheduled'}" Grid.Row="4" Grid.Column="1"/>
+                                <Label Text="Maint. Notes:" Grid.Row="5" Grid.Column="0" FontAttributes="Bold" IsVisible="{Binding MaintenanceNotes, Converter={StaticResource StringToBoolConverter}}"/>
                                 <Label Text="{Binding MaintenanceNotes}" Grid.Row="5" Grid.Column="1" IsVisible="{Binding MaintenanceNotes, Converter={StaticResource StringToBoolConverter}}"/>
 
-                                <!-- Maintenance Actions - Visible to Ops Manager/Admin -->
-                                <HorizontalStackLayout Grid.Row="6" Grid.ColumnSpan="2" Spacing="10" Margin="0,10,0,0"
-                                                       IsVisible="{Binding Source={RelativeSource AncestorType={x:Type local:SensorManagementPage}}, Path=IsAdminVisible}">
-                                    <Button Text="Schedule"
-                                            CommandParameter="{Binding .}"
-                                            Clicked="OnScheduleMaintenanceClicked"
-                                            WidthRequest="120"/>
-                                    <Button Text="Mark Complete"
-                                            CommandParameter="{Binding .}"
-                                            Clicked="OnMarkMaintenanceCompleteClicked"
-                                            IsEnabled="{Binding NextMaintenanceDate, Converter={StaticResource NullToBoolConverter False}}"
-                                            WidthRequest="150"/>
-                                </HorizontalStackLayout>
+                                <!-- Admin Only Section -->
+                                <VerticalStackLayout Grid.Row="6" Grid.ColumnSpan="2" Margin="0,15,0,0" Spacing="8"
+                                                     IsVisible="{Binding Source={RelativeSource AncestorType={x:Type local:SensorManagementPage}}, Path=IsAdminVisible}">
+
+                                    <Label Text="--- Configuration and Firmware (Admin) ---" FontSize="Small" FontAttributes="Italic"/>
+
+                                    <!-- Configuration Details -->
+                                    <Grid ColumnDefinitions="Auto, *" RowDefinitions="Auto, Auto, Auto" ColumnSpacing="10">
+                                        <Label Grid.Row="0" Grid.Column="0" Text="Enabled:" FontAttributes="Bold"/>
+                                        <Label Grid.Row="0" Grid.Column="1" Text="{Binding IsEnabled, Converter={StaticResource BoolToYesNoConverter}}"/>
+                                        <Label Grid.Row="1" Grid.Column="0" Text="Interval (s):" FontAttributes="Bold"/>
+                                        <Label Grid.Row="1" Grid.Column="1" Text="{Binding SamplingIntervalSeconds}"/>
+                                        <Label Grid.Row="2" Grid.Column="0" Text="Threshold:" FontAttributes="Bold"/>
+                                        <Label Grid.Row="2" Grid.Column="1" Text="{Binding ReportingThreshold, TargetNullValue='N/A'}"/>
+                                    </Grid>
+
+                                    <!-- Firmware Details -->
+                                    <Grid ColumnDefinitions="Auto, *" RowDefinitions="Auto, Auto, Auto" ColumnSpacing="10" Margin="0,10,0,0">
+                                        <Label Grid.Row="0" Grid.Column="0" Text="Firmware Ver:" FontAttributes="Bold"/>
+                                        <Label Grid.Row="0" Grid.Column="1" Text="{Binding CurrentFirmwareVersion}"/>
+                                        <Label Grid.Row="1" Grid.Column="0" Text="Latest Ver:" FontAttributes="Bold"/>
+                                        <Label Grid.Row="1" Grid.Column="1" Text="{Binding LatestFirmwareVersion}"/>
+                                        <Label Grid.Row="2" Grid.Column="0" Text="FW Status:" FontAttributes="Bold"/>
+                                        <Label Grid.Row="2" Grid.Column="1" Text="{Binding FirmwareUpdateStatus}" TextColor="{Binding FirmwareUpdateStatus, Converter={StaticResource FirmwareStatusColorConv}}"/>
+                                    </Grid>
+
+                                    <!-- Admin Actions -->
+                                    <HorizontalStackLayout Spacing="10" Margin="0,10,0,0">
+                                        <Button Text="Configure"
+                                                CommandParameter="{Binding .}"
+                                                Clicked="OnConfigureClicked"
+                                                WidthRequest="120"/>
+                                        <Button Text="Update Firmware"
+                                                CommandParameter="{Binding .}"
+                                                Clicked="OnUpdateFirmwareClicked"
+                                                IsEnabled="{Binding Path=., Converter={StaticResource FirmwareUpdateNeededConverter}, ConverterParameter={Binding LatestFirmwareVersion}}"
+                                                WidthRequest="150"/>
+                                    </HorizontalStackLayout>
+
+                                    <!-- Maintenance Actions (Moved inside Admin section or keep separate if needed) -->
+                                    <HorizontalStackLayout Spacing="10" Margin="0,10,0,0">
+                                        <Button Text="Schedule Maint."
+                                                CommandParameter="{Binding .}"
+                                                Clicked="OnScheduleMaintenanceClicked"
+                                                WidthRequest="140"/>
+                                        <Button Text="Mark Maint. Complete"
+                                                CommandParameter="{Binding .}"
+                                                Clicked="OnMarkMaintenanceCompleteClicked"
+                                                IsEnabled="{Binding NextMaintenanceDate, Converter={StaticResource NullToBoolConverter False}}"
+                                                WidthRequest="180"/>
+                                    </HorizontalStackLayout>
+
+                                </VerticalStackLayout>
+                                <!-- End Admin Only Section -->
                             </Grid>
                         </VerticalStackLayout>
                     </Border>
@@ -64,14 +105,4 @@
             </CollectionView.ItemTemplate>
         </CollectionView>
     </Grid>
-
-    <!-- Optional: Add Converters in Page Resources for dynamic coloring/visibility -->
-    <ContentPage.Resources>
-        <!-- Example Converter (Implement C# logic in code-behind or separate file) -->
-        <!-- <local:StatusToColorConverter x:Key="StatusToColorConverter" /> -->
-        <!-- <local:DateToColorConverter x:Key="DateToColorConverter" /> -->
-        <!-- <local:StringToBoolConverter x:Key="StringToBoolConverter" /> -->
-        <!-- <local:NullToBoolConverter x:Key="NullToBoolConverter" /> -->
-    </ContentPage.Resources>
-
 </ContentPage>
