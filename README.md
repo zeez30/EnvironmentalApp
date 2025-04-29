@@ -56,7 +56,7 @@ Environmental Scientist : <br>
 Operations Manager : <br>
 - Monitor the operational status of sensors <br>
 Administrator : <br>
-- 
+- Oversee data storage and implement backup strategies <br>
 
 Abbie: <br>
 Environmental Scientist: <br>
